@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap');
+
+* {
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+
+.pagina {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: white;
+    padding: 20px;
+    margin-left: 50px;
+}
+
+.text p {
+    font-size: 17px;
+}
+
+.text h1 {
+    margin-left: 20px;
+    font-size: 50px;
+}
+
+.text h1 span {
+    color: rgb(246, 156, 47);
+}
+
+/* Estilos para a seção "Sobre Nós" */
+.sobrenos {
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+  padding-top: 8%;
+    /* min-height: 60vh; */
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sobrenos .texto {
+    text-align: center;
+    font-size: 18px;
+    width: 80vh;
+}
+
+.sobrenos .texto p {
+    text-shadow: black;
+}
+
+
+.MVV {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    gap: 3%;
+    align-items: center;
+}
+
+.MVV img {
+    width: 200px;
+    height: 200px;
+}
+
+.missao,
+.visao,
+.valores {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgba(255, 213, 106, 0.49); */
+    border-radius: 40%;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    padding: 50px;
+    text-align: justify;
+}
+
+.valores {
+    background-color: rgb(255, 213, 106);
+    height: 310px;
+}
+
+
+.pagina_dois {
+    display: flex;
+    align-items: center;
+    height: 80vh;
+}
+
+.pagina_dois .imagem_pg_1 {
+    width: 40%;
+    display: flex;
+    margin-left: 60px;
+}
+
+.pagina_dois img {
+    width: 399px;
+    height: 500px;
+}
+
+.pagina_dois .texto {
+    width: 70%;
+    margin-right: 90px;
+    text-align: justify;
+}
+
+
+.pagina_tres {
+    display: flex;
+    padding-right: 60px;
+    padding-left: 60px;
+    height: 80vh;
+    align-items: center;
+    background: linear-gradient(90deg, #EF9E00, rgb(246, 190, 47), #ef9f0055, #ef9f0055, rgba(255, 255, 255, 0.838));
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.pagina_tres h2 {
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.pagina_tres p {
+    font-size: 18px;
+    text-align: justify;
+    width: 70%;
+    max-width: 800px;
+}
+
+.pagina_tres .botao {
+    background-color: #EF9E00;
+    width: 230px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 23px;
+    margin-top: 20px;
+}
+
+.lista_motivos ol li{
+    list-style-type: disc;
+}
+
+.pagina_quatro {
+    display: flex;
+    height: auto;
+    min-height: 90vh;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+}
+
+.pagina_quatro h1 {
+    font-size: 30px;
+}
+
+.pagina_quatro .imagem {
+    display: flex;
+    height: 100%;
+    width: 70vh;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.pagina_quatro .imagem img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.pagina_quatro .corpo_texto {
+    margin: 0px;
+    width: calc(50% - 40px);
+    max-width: 700px;
+}
+
+.pagina_quatro .botao {
+    background-color: #EF9E00;
+    width: 230px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 23px;
+    margin-top: 20px;
+}
+
+.pagina_cinco {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.pagina_cinco h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.pagina_cinco p {
+    font-size: 18px;
+    text-align: center;
+    width: 99vh;
+}
+
+.pagina_cinco .botao {
+    background-color: #EF9E00;
+    width: 230px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 23px;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 1024px) {
+    .sobrenos,
+    .MVV {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .text h1,
+    .pagina_quatro h1 {
+        font-size: 3rem;
+    }
+
+    .pagina_dois .imagem_pg_1 img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .missao,
+    .visao,
+    .valores {
+        width: 300px;
+        height: 300px;
+        padding: 3rem;
+    }
+
+    .pagina_quatro h1 {
+        font-size: 3rem;
+    }
+
+    .pagina_quatro .botao {
+        width: 230px;
+    }
+
+    .pagina_cinco p {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .sobrenos,
+    .MVV,
+    .pagina_dois,
+    .pagina_tres,
+    .pagina_quatro,
+    .pagina_cinco {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .text h1,
+    .pagina_quatro h1 {
+        font-size: 20px;
+    }
+
+    .pagina_dois .imagem_pg_1 img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .missao,
+    .visao,
+    .valores {
+        width: 200px;
+        height: 200px;
+        padding: 2rem;
+    }
+
+    .pagina_quatro .botao {
+        width: 200px;
+    }
+
+    .pagina_cinco p {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .sobrenos,
+    .MVV,
+    .pagina_dois,
+    .pagina_tres,
+    .pagina_quatro,
+    .pagina_cinco {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .text h1,
+    .pagina_quatro h1 {
+        font-size: 2rem;
+    }
+
+    .pagina_dois .imagem_pg_1 img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .missao,
+    .visao,
+    .valores {
+        width: 150px;
+        height: 150px;
+        padding: 1.5rem;
+    }
+
+    .pagina_quatro .corpo_texto {
+        /* width: 20vh; */
+    }
+
+    .pagina_quatro .botao {
+        width: 180px;
+    }
+
+    .pagina_cinco p {
+        width: 70%;
+    }
+}
