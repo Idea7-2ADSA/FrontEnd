@@ -1,4 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
+var franquiaModel = require("../models/franquiaModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -55,25 +56,43 @@ function cadastrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
-        usuarioModel.cadastrar(nome, cnpj, cep, email, senha)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
+        franquiaModel.consultarFranquia(cep)
+        .then(
+            (resFranquia) => {
+                if(resFranquia.length > 0) {
+                    usuarioModel.cadastrar(nome, email, senha, resFranquia[0].idFranquia, resFranquia[0].fkEmpresa)
+                    .then(
+                        function (resultado) {
+                            res.json(resultado);
+                        }
+                    ).catch(
+                        function (erro) {
+                            console.log(erro);
+                            console.log(
+                            "\nHouve um erro ao realizar o cadastro! Erro: ",
+                            erro.sqlMessage
+                            );
+                            if(erro.sqlMessage == `Duplicate entry '${email}' for key 'usuario.email'`) {
+                                res.status(401).json(erro.sqlMessage);
+                            }else{
+                                res.status(500).json(erro.sqlMessage);
+                            }
+                        }
+                    )
+                }else {
+                    console.log("\nFranquia não encontrada");
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    if(erro.sqlMessage == `Duplicate entry '${email}' for key 'usuario.email'`) {
-                        res.status(401).json(erro.sqlMessage);
-                    }else{
-                        res.status(500).json(erro.sqlMessage);
-                    }
-                }
-            );
+            }
+            
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao consultar o franquia! Erro: "
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
     }
 }
 

@@ -29,7 +29,7 @@ function cadastrar() {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    alert("foi krl")
+                    
                 } else {
                     if (resposta.status == 401) {
                         alert(`O email cadastrado já existe!`)
