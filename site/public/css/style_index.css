@@ -37,14 +37,12 @@
     color: rgb(246, 156, 47);
 }
 
-/* Estilos para a seção "Sobre Nós" */
 .sobrenos {
     display: flex;
     align-items: center;
     padding-left: 100px;
     padding-right: 100px;
-  padding-top: 8%;
-    /* min-height: 60vh; */
+    padding-top: 8%;
     flex-direction: column;
     justify-content: center;
 }
@@ -80,7 +78,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: rgba(255, 213, 106, 0.49); */
     border-radius: 40%;
     width: 300px;
     height: 300px;
@@ -89,9 +86,29 @@
     text-align: justify;
 }
 
+
+.MVV {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+
+.missao,
+.visao,
 .valores {
-    background-color: rgb(255, 213, 106);
-    height: 310px;
+    flex: 0 1 calc(33.33% - 20px);
+    background-color: rgba(255, 213, 106, 0.49);
+    border-radius: 17px;
+    padding: 20px;
+    text-align: justify;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60vh;
 }
 
 
@@ -154,7 +171,7 @@
     margin-top: 20px;
 }
 
-.lista_motivos ol li{
+.lista_motivos ol li {
     list-style-type: disc;
 }
 
@@ -236,121 +253,607 @@
     border-radius: 23px;
 }
 
-/* Media Queries */
-@media only screen and (min-width: 1024px) {
-    .sobrenos,
-    .MVV {
-        padding-left: 10%;
-        padding-right: 10%;
+
+
+@media only screen and (min-width: 200px) and (max-width: 500px) {
+    * {
+        margin: 0px;
+        padding: 0px;
     }
 
-    .text h1,
-    .pagina_quatro h1 {
-        font-size: 3rem;
+    .pagina {
+        width: 100%;
+        background-size: cover;
+        height: 100vh;
+        align-items: center;
+        text-align: justify;
+        justify-content: center;
+        margin: 0;
     }
 
-    .pagina_dois .imagem_pg_1 img {
-        max-width: 100%;
-        height: auto;
+    .pagina .text{
+        margin: 0;
+        text-align: start;
     }
 
-    .missao,
-    .visao,
-    .valores {
-        width: 300px;
-        height: 300px;
-        padding: 3rem;
+    .pagina p {
+        margin-bottom: 20px;
+        font-size: 13px;
     }
 
-    .pagina_quatro h1 {
-        font-size: 3rem;
-    }
-
-    .pagina_quatro .botao {
-        width: 230px;
-    }
-
-    .pagina_cinco p {
-        width: 90%;
-    }
-}
-
-@media only screen and (max-width: 1023px) {
-    .sobrenos,
-    .MVV,
-    .pagina_dois,
-    .pagina_tres,
-    .pagina_quatro,
-    .pagina_cinco {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
-    .text h1,
-    .pagina_quatro h1 {
+    .pagina h1 {
         font-size: 20px;
+        /* white-space: nowrap; */
+        margin: 0px;
     }
 
-    .pagina_dois .imagem_pg_1 img {
-        max-width: 100%;
+    .sobrenos {
+        width: 100%;
+        height: 80vh;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        text-align: justify;
+        padding: 70px;
+    }
+
+    .sobrenos h1{
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    .sobrenos h1 {
+        font-size: 25px; /* Ajuste o tamanho da fonte conforme necessário */
+        line-height: 1.5; /* Ajuste o espaçamento entre linhas conforme necessário */
+    }
+
+    .sobrenos .texto {
+        font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
+        line-height: 1.5; /* Ajuste o espaçamento entre linhas conforme necessário */
+    }
+
+    .MVV {
         height: auto;
+        gap: 30px;
+        justify-content: center;
     }
 
     .missao,
     .visao,
     .valores {
-        width: 200px;
-        height: 200px;
-        padding: 2rem;
+        width: 90%;
+        max-width: 300px;
+        flex: 1;
+        font-size: 12px;
     }
 
-    .pagina_quatro .botao {
-        width: 200px;
+
+    .pagina_dois {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        padding: 20px;
     }
 
-    .pagina_cinco p {
-        width: 80%;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .sobrenos,
-    .MVV,
-    .pagina_dois,
-    .pagina_tres,
-    .pagina_quatro,
-    .pagina_cinco {
-        padding-left: 2%;
-        padding-right: 2%;
+    .pagina_dois .imagem_pg_1 {
+        display: none;
     }
 
-    .text h1,
+    .pagina_dois .texto {
+        width: 90%;
+        font-size: 14px;
+        text-align: justify;
+        margin: 10px;
+        /* Adicionado para criar um espaço entre o texto e as bordas */
+    }
+
+    .pagina_dois img {
+        width: 100%;
+        height: auto;
+    }
+
+
+    .pagina_tres {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        height: auto;
+    }
+
+    .pagina_tres h2 {
+        font-size: 25px;
+        margin-bottom: 20px;
+        text-align: center;
+
+    }
+
+    .pagina_tres .lista_motivos ol {
+        font-size: 14px;
+        padding: 10px;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .pagina_tres .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .pagina_quatro {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
     .pagina_quatro h1 {
-        font-size: 2rem;
+        font-size: 25px;
+        margin-bottom: 10px;
+        text-align: center;
     }
 
-    .pagina_dois .imagem_pg_1 img {
+    .pagina_quatro .imagem {
+        width: 90%;
+        margin: 20px 0;
+    }
+
+    .pagina_quatro .imagem img {
         max-width: 100%;
         height: auto;
-    }
-
-    .missao,
-    .visao,
-    .valores {
-        width: 150px;
-        height: 150px;
-        padding: 1.5rem;
     }
 
     .pagina_quatro .corpo_texto {
-        /* width: 20vh; */
+        width: 90%;
+        max-width: 600px;
+        text-align: justify;
+    }
+
+    .pagina_quatro .corpo_texto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
     }
 
     .pagina_quatro .botao {
-        width: 180px;
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .pagina_cinco {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .pagina_cinco h1 {
+        font-size: 25px;
+        text-align: center;
     }
 
     .pagina_cinco p {
+        font-size: 12px;
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .pagina_cinco .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 600px) {
+    .pagina {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .pagina h2 {
+        font-size: 15px;
+    }
+
+    .pagina h1 {
+        font-size: 20px;
+    }
+
+    .sobrenos {
+        width: 100%;
+        height: 80vh;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        text-align: justify;
+        font-size: 13px;
+        padding: 70px;
+    }
+
+
+    .MVV {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .missao,
+    .visao,
+    .valores {
+        width: 90%;
+        max-width: 300px;
+        flex: 1;
+        font-size: 12px;
+    }
+
+    .pagina_dois {
+        font-size: 15px;
+        gap: 10px;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagina_dois .texto {
+        width: 90%;
+        height: auto;
+        font-size: 12px;
+    }
+
+    .pagina_dois .imagem_pg_1 {
         width: 70%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin: 30px;
+    }
+
+    .pagina_dois img {
+        width: 100%;
+        height: auto;
+    }
+
+    .pagina_tres {
+        height: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagina_tres h2 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .pagina_tres .lista_motivos ol {
+        font-size: 14px;
+        padding: 10px;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .pagina_tres .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .pagina_quatro {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        font-size: 13px;
+    }
+
+    .pagina_quatro .corpo_texto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagina_quatro h1 {
+        font-size: 25px;
+    }
+
+    .pagina_quatro .imagem {
+        width: 90%;
+        margin: 20px 0;
+    }
+
+    .pagina_quatro .imagem img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .pagina_quatro .corpo_texto {
+        width: 90%;
+        max-width: 600px;
+        text-align: justify;
+    }
+
+    .pagina_quatro .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .pagina_cinco {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .pagina_cinco h1 {
+        font-size: 25px;
+    }
+
+    .pagina_cinco p {
+        font-size: 13px;
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .pagina_cinco .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .pagina {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .pagina h2 {
+        font-size: 15px;
+    }
+
+    .pagina h1 {
+        font-size: 20px;
+    }
+
+    .sobrenos {
+        width: 100%;
+        height: 50vh;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        text-align: justify;
+        font-size: 13px;
+        padding: 70px;
+    }
+
+    .sobrenos h1 {
+        margin-bottom: 10px;
+    }
+
+
+    .MVV {
+        width: 100%;
+        height: 100vh;
+        font-size: 15px;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .missao,
+    .visao,
+    .valores {
+        width: 40%;
+        max-width: 200px;
+        flex: 1;
+        font-size: 12px;
+    }
+
+    .pagina_dois {
+        gap: 10px;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagina_dois .texto {
+        width: 90%;
+        height: auto;
+        font-size: 12px;
+    }
+
+    .pagina_dois .imagem_pg_1 {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .pagina_dois img {
+        width: 100%;
+        height: auto;
+    }
+
+    .pagina_tres {
+        height: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagina_tres h2 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .pagina_tres .lista_motivos ol {
+        font-size: 14px;
+        padding: 10px;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .pagina_tres .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .pagina_quatro {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+
+    .pagina_quatro h1 {
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .pagina_quatro .imagem {
+        width: 90%;
+        margin: 20px 0;
+    }
+
+    .pagina_quatro .imagem img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .pagina_quatro .corpo_texto {
+        width: 90%;
+        max-width: 600px;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+    }
+
+    .pagina_quatro .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .pagina_cinco {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pagina_cinco h1 {
+        font-size: 27px;
+    }
+
+    .pagina_cinco p {
+        font-size: 13px;
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .pagina_cinco .botao {
+        width: 90%;
+        max-width: 250px;
+    }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1044px) {
+    .pagina {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .pagina .text {
+        width: 100vh;
+        justify-content: center
+    }
+
+    .pagina .text h1 {
+        font-size: 30px;
+    }
+
+    .sobrenos {
+        width: 100%;
+        height: 87vh;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .MVV {
+        width: 100%;
+        height: 100vh;
+        font-size: 15px;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .MVV .missao {
+        height: 70vh;
+    }
+
+    .MVV .visao {
+        height: 70vh;
+    }
+
+    .MVV .valores {
+        height: 70vh;
+    }
+
+    .pagina_dois {
+        font-size: 15px;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .pagina_dois .imagem_pg_1 img {
+        height: 400px;
+    }
+
+    .pagina_tres .lista_motivos ol {
+        font-size: 12px;
+        padding: 10%;
+        height: 90%;
+        width: 100%;
+    }
+
+    .pagina_tres h2 {
+        font-size: 23px;
+    }
+
+    .pagina_quatro {
+        font-size: 15px;
+    }
+
+    .pagina_cinco {
+        font-size: 15px;
     }
 }
