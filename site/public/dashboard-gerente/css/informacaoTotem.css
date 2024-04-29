@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap');
+
+/* Todos os elementos da página */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+body{
+    background: linear-gradient(90deg, #FEDD58,#FF924D);
+}
+
+.banner{
+    height: 90vh;
+    padding: 20px;
+}
+
+.banner .container{
+    display: flex;
+}
+
+.barra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 14%;
+    height: 85vh;
+    margin-left: 20px;
+    margin-top: 2%;
+    border-radius: 50px;
+    box-shadow: 2px 2px #0000003d;
+}   
+
+
+.barra .icones .box{
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.barra .icones .box img{
+    width: 35px;
+    margin-top: 2px;
+}
+
+.barra .icones .box span{
+    padding: 5px;
+}
+
+.container-kpi{
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-kpi .kpis{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container-kpi .kpis .kpi{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 200px;
+    margin-left: 50px;
+    margin-top: 3%;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 2px 2px #0000003d;
+}
+
+#kpi-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container-kpi .kpis .kpi img{
+    width: 100px;
+}
+
+.container-kpi .kpis .kpi p{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container-kpi .kpis .kpi span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.descricao{
+    margin: 40px;
+}
+
+.kpi a{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.container-kpi select{
+    width: 200px;
+    height: 35px;
+    border: none;
+    border-radius: 25px;
+    margin-left: 100px;
+    text-align: center;
+}
+
+.alertas{
+    display: flex;
+    margin-top: 2%;
+    margin-left: 2%;
+    background-color: white;
+    height: 100px;
+    border-radius: 75px;
+}
+
+.alertas .box{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.container-grafico{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
+
+.container-grafico .grafico{
+    background-color: white;
+    margin: 10px;
+    width: 38%;
+    height: 240px;
+    border-radius: 20px;
+    box-shadow: 2px 2px #0000003d;
+}

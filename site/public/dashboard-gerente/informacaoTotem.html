@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/informacaoTotem.css">
+    <title>Informação Totem</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="banner">
+        <div class="container" id="container">
+            <div class="barra">    
+                <div class="icones">
+                    <div class="box">
+                        <img src="./img/icon-profile.png" >
+                         <span>Vitor Tigre</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-home.png" >
+                        <span>Geral</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-settings.png" > 
+                        <span>Ajustes</span>
+                    </div>
+
+
+                    <div class="box">
+                        <img src="./img/icon-phone.png">
+                        <span>Chamado</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/sair.png">
+                        <span>Sair</span>
+                    </div>
+                </div>
+               
+            </div>
+            
+            <div class="container-kpi">
+                <select name="totens" id="totens" onchange="sessoesTotens()">
+                    <option id="idTotem"></option>
+                    <option value="Franquias">Franquias</option>
+                    <option value="NovoTotem" >Novo Totem</option>
+                    <option value="Relatorios" >Relatórios</option>
+                  </select>
+                <div id="kpis" class="kpis">
+                    <div class="container-box-toten"> </div>
+                    
+                    <div class="kpi" id="kpi-img">
+                       <img src="img/vermelho.png">
+                       <span>Limete de consumo</span>
+                    </div>
+
+                    <div class="kpi">
+                        <p>Totens em Alerta</p>
+                        <a href="#">Toten 096</a>
+                        <a href="#">Toten 078</a>
+                        <a href="#">Toten 021</a>
+                        <a href="#">Toten 044</a>
+                        
+                    </div>  
+
+
+                    <div class="kpi">
+                        <p>Maior temperatura CPU hoje</p>
+                        <span class="descricao">89.15 °C</span>
+                    </div>  
+
+                    <div class="kpi">
+                        <p>Maior uso do Disco hoje</p>
+                        <span class="descricao">95%</span>
+                    </div>
+                </div>
+
+                <div class="alertas">
+                    <div class="box">
+                        <img src="./img/verde.png">
+                        <span>Temperatura e processos OK</span>  
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/cuidado.png">
+                        <span>Temperatura elevada e/ou consumos escalando</span>  
+                    </div>
+
+                   
+                    <div class="box">
+                        <img src="./img/laranja.png">
+                        <span>Temperatura elevada, consumos e processos escalando</span>  
+                    </div>
+
+                   
+                    <div class="box">
+                        <img src="./img/vermelho.png">
+                        <span>Limites de consumo e/ou temperatura atingidos?s</span>  
+                    </div>
+                </div>
+                <div id="containerGrafico"  class="container-grafico">
+                    <div class="grafico">
+                        <canvas id="myChart" style="padding: 20px; width: 10px;"></canvas>
+                    </div>
+
+                    <div class="grafico">
+                        <canvas id="myChart2" style="padding: 20px; width: 10px;"></canvas>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<script>
+    function sessoesTotens(){
+        var opcaoSelecionada = totens.value;
+        console.log(opcaoSelecionada)
+
+        if(opcaoSelecionada == 'Franquias'){
+            window.location.assign('index.html')
+        }
+
+        else if(opcaoSelecionada == 'NovoTotem'){
+            window.location.assign('cadastroTotem.html')
+        }
+
+        else if (opcaoSelecionada == 'Relatorios'){
+            window.location.assign('relatorios.html')
+        }
+    }
+</script>
+
+<script>
+    // Função para obter parâmetros da URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    
+    // Obtém o valor do parâmetro 'toten' da URL
+    var toten = getParameterByName('toten');
+    idTotem.innerHTML = 'Totem' + toten
+</script>
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['18:00'],
+
+      datasets: [{
+        label: ['Consumo da CPU'] ,
+        borderColor: 'rgb(0,0,0)',
+        backgroundColor: 'rgb(42,45,115)',
+        data: [89.5] , 
+        borderWidth: 1
+      },
+
+  ]
+    },
+    
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const ctx2 = document.getElementById('myChart2').getContext('2d');
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['17:00'],
+
+      datasets: [{
+        label: ['Consumo do Disco'] ,
+        backgroundColor: 'rgb(43,105,154)',
+        data: [95] , 
+        borderWidth: 1
+      },
+
+  ]
+    },
+    
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  </script>
