@@ -21,14 +21,14 @@ body{
     align-items: center;
 }
 
-.barra{
+.barra {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: white;
     width: 14%;
-    height: 80vh;
+    height: 95vh;
     margin-left: 20px;
     border-radius: 50px;
     box-shadow: 2px 2px #0000003d;
@@ -111,7 +111,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin: 25px;
+    /* margin: 25px; */
 }
 
 .alertas{
@@ -176,3 +176,4 @@ body{
 .box-toten img{
     margin-top: 30px;
 }
+

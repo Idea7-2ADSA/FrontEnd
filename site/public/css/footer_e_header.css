@@ -1,7 +1,6 @@
-
-*{
-    margin: 0;
-    padding: 0;
+* {
+    margin: 0px;
+    padding: 0px;
 }
 
 header {
@@ -18,8 +17,20 @@ header {
     color: white;
 }
 
-header .outros{
+.logo {
+    width: 105px;
+    padding: 6%;
+    margin-left: 2%;
     display: flex;
+    align-items: center;
+}
+
+header .outros {
+    display: flex;
+}
+
+.outros_1 {
+    display: none;
 }
 
 header a {
@@ -35,9 +46,9 @@ header a:hover {
 }
 
 header a img {
-    width: 60%;
-    height: 60%;
-    margin-bottom: 40px;
+    width: 84px;
+    height: 58px;
+    margin: 0px;
 }
 
 
@@ -51,15 +62,15 @@ footer {
 }
 
 
-footer .title{
+footer .title {
     font-weight: bold;
 }
 
-footer .title-nav{
+footer .title-nav {
     font-weight: bold;
 }
 
-footer .title:hover{
+footer .title:hover {
     color: #EF9E00;
 }
 
@@ -69,7 +80,68 @@ footer h1 {
     color: #EF9E00;
 }
 
-footer a{
+footer a {
     text-decoration: none;
     color: black;
+}
+
+
+
+@media only screen and (min-width: 100px) and (max-width: 700px) {
+    header {
+        width: 100%;
+        font-size: 13px;
+    }
+
+    header a img {
+        width: 80px;
+        height: 46px;
+        margin: 0px;
+    }
+
+    header .outros {
+        display: none;
+    }
+
+    header .outros_1 {
+        display: flex;
+
+    }
+
+    footer {
+        width: 100%;
+        height: 20vh;
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        gap: 30px;
+        padding: 10px;
+    }
+
+    footer p {
+        display: none;
+    }
+
+    footer h1 {
+        margin: 0px;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 1044px) {
+
+    header {
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    footer {
+        width: 100%;
+        height: auto;
+        font-size: 12px;
+        gap: 30px;
+        padding: 10px;
+    }
+
 }

@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboards</title>
     <link rel="stylesheet" href="./css/geral.css">
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="banner">
         <div class="container" id="container">
-            <div class="barra">    
+            <div class="barra">
                 <div class="icones">
                     <div class="box">
-                        <img src="./img/icon-profile.png" >
-                         <span>Vitor Tigre</span>
+                        <img src="./img/icon-profile.png">
+                        <span>Vitor Tigre</span>
                     </div>
 
                     <div class="box">
-                        <img src="./img/icon-home.png" >
+                        <img src="./img/icon-home.png">
                         <span>Geral</span>
                     </div>
 
                     <div class="box">
-                        <img src="./img/icon-settings.png" > 
+                        <img src="./img/icon-settings.png">
                         <span>Ajustes</span>
                     </div>
-
 
                     <div class="box">
                         <img src="./img/icon-phone.png">
@@ -38,17 +39,18 @@
                         <span>Sair</span>
                     </div>
                 </div>
-               
             </div>
-            
+
             <div class="container-kpi">
                 <select name="totens" id="totens" onchange="sessoesTotens()">
                     <option value="Geral">Geral</option>
-                    <option value="Totens" >Totens</option>
-                  </select>
+                    <option value="Totens">Totens</option>
+                    <option value="Ajustes">Ajustes</option>
+                    <option value="Historico">Histórico</option>
+                </select>
                 <div id="kpis" class="kpis">
                     <div class="container-box-toten"> </div>
-                    
+
                     <div class="kpi">
                         <p>Número de totens com alertas ou avisos</p>
                         <span>3 Avisos</span>
@@ -60,7 +62,7 @@
                         <p>Próxima reinicialização</p>
                         <span>02/05</span>
                         <span>04:00</span>
-                    </div>  
+                    </div>
 
                     <div class="kpi">
                         <p>Número de perda de lucratividade com totens inativos</p>
@@ -71,120 +73,57 @@
                     <div class="kpi">
                         <p>Totens com alertas por mais de 24 horas</p>
                         <span class="unico">8 Totens</span>
-                        
                     </div>
                 </div>
 
-                <div  id="containerGrafico"  class="container-grafico">
+                <div id="containerGrafico" class="container-grafico">
                     <div class="grafico">
                         <canvas id="myChart" style="padding: 20px"></canvas>
                     </div>
-
-                    
-                
+                </div>
             </div>
-           
         </div>
     </div>
 </body>
 
-  <script>
-    function sessoesTotens(){
-        var opcaoSelecionada = totens.value
+<script>
+    function sessoesTotens() {
+    var opcaoSelecionada = totens.value;
 
-        if(opcaoSelecionada == "Totens"){
-            window.location.assign('totens.html')
-    //         kpis.innerHTML = "";
-    //         containerGrafico.innerHTML = "";
-    //         kpis.innerHTML = `
-    //         <style>
-    //             .container-kpi .kpis{
-    //                 width: 85vw;
-    //             }
-    //         </style>
-    //         `
-
-    //         for(i = 0; i < 10   ; i++){
-    //             kpis.innerHTML+= `
-    //                 <div class="box-toten">
-    //                         <p>Toten ${i + 1}</p>
-    //                         <img src="./img/verde.png" width="45px">
-    //                 </div>`
-    //         }
-
-    //         containerGrafico.innerHTML = `
-    //         <style>
-    //             .alertas{
-    //                 margin: 20px;
-    //             }
-    //         </style>
-    //         <div class="alertas">
-    //                     <p>Tipos de Alerta</p>
-
-    //                     <div class="box">
-    //                         <img src="./img/verde.png">
-    //                         <span>Ok - Tudo de acordo com o esperado</span>  
-    //                     </div>
-
-    //                     <div class="box">
-    //                         <img src="./img/cuidado.png">
-    //                         <span>Atenção - Seu totem pode apresentar lentidão</span>  
-    //                     </div>
-
-                        
-    //                     <div class="box">
-    //                         <img src="./img/laranja.png">
-    //                         <span>Criríco - Seu totem pode falhar a qualquer instante</span>  
-    //                     </div>
-
-                        
-    //                     <div class="box">
-    //                         <img src="./img/vermelho.png">
-    //                         <span>Urgente - Seu totem não está funcionando</span>  
-    //                     </div>
-    //                 </div>`
-    //     }
-
-    //     else{
-    //         window.location.reload(true);
-
-         }
-}
-  </script>
-
-  <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [
-          'Seg',
-          'Ter',
-          'Qua',
-          'Qui',
-          'Sex',
-          'Sab',
-          'Dom'],
-
-      datasets: [{
-        label: ['Número de Ocorrencias'] ,
-        borderColor: 'rgb(0,0,0)',
-        backgroundColor: 'rgb(255,209,99)',
-        data: [5,8,1,1,1,3,4] , 
-        borderWidth: 1
-      },
-
-  ]
-    },
-    
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
+    if (opcaoSelecionada == "Historico") {
+        window.location.assign('historico.html');
+    } else if (opcaoSelecionada == "Geral") {
+        window.location.assign('index.html');
+    } else if (opcaoSelecionada == "Totens") {
+        window.location.assign('totens.html');
+    } else if (opcaoSelecionada == "Ajustes") {
+        window.location.assign('ajustes.html');
     }
-  });
-  </script>
+}
+</script>
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+            datasets: [{
+                label: 'Número de Ocorrências',
+                borderColor: 'rgb(0,0,0)',
+                backgroundColor: 'rgb(255,209,99)',
+                data: [5, 8, 1, 1, 1, 3, 4],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 </html>
