@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="container">
+            <div class="barra">
+                <div class="icones">
+                    <div class="box">
+                        <img src="./img/icon-profile.png" >
+                         <span>Gustavo Antunes</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-phone.png">
+                        <span>Chamados</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/franquias.png" >
+                        <span>Franquias</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/publicar.png" >
+                        <span>Novo Toten</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/sair.png">
+                        <span>Sair</span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="container-kpi">
+                <select name="totens" id="totens" onchange="sessoesTotens()">
+                    <option value="Franquias">Franquias</option>
+                    <option value="NovoTotem" >Novo Toten</option>
+                  </select>
+                
+                  <div id="kpis" class="kpis">
+                    <div class="container-box-toten"> </div>
+                    
+                    <div class="kpi">
+                        <p>Alameda Santos - Sp</p>
+                        <img src="img/verde.png">
+                        <span>0 Totens em alerta</span>
+                        <button class="botao-dialogo" data-target="1">Mais Informações</button>
+                    </div>
+
+                    <div class="kpi">
+                        <p>Paulista - Sp</p>
+                        <img src="img/cuidado.png">
+                        <span>2 Totens em alerta</span>
+                        <button class="botao-dialogo" data-target="2">Mais Informações</button>
+
+                    </div>  
+
+                    <div class="kpi">
+                        <p>Mc 1000 - Sp</p>
+                        <img src="img/laranja.png">
+                        <span>4 Totens em alerta</span>
+                        <button class="botao-dialogo" data-target="3">Mais Informações</button>
+                    </div>
+
+                    <div class="kpi">
+                        <p>Poá - Sp</p>
+                        <img src="img/verde.png">
+                        <span>0 Totens em alerta</span>
+                        <button class="botao-dialogo" data-target="4">Mais Informações</button>
+                    </div>
+
+                    <div class="kpi">
+                        <p>Ferraz de Vasconcelos - Sp</p>
+                        <img src="img/vermelho.png">
+                        <span>5 Totens em alerta</span>
+                        <button class="botao-dialogo" data-target="5">Mais Informações</button>
+                    </div>
+
+                    <div class="kpi">
+                        <p>Brigadeiro - Sp</p>
+                        <img src="img/cuidado.png   ">
+                        <span>3 Totens em alerta</span>
+                        <button class="botao-dialogo" data-target="6">Mais Informações</button>
+                    </div>  
+
+
+                </div>
+
+            </div>
+            <div class="espaco-modal">
+                    <dialog id="1">
+                        <div class="elementos">
+                            <div class="box-toten">
+                                <p>Toten 001</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 078</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 021</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 054</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 074</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+                            
+                        </div>
+                        <div class="espaco-btn">
+                            <button >Fechar</button>
+                        </div>
+                    </dialog>      
+                    
+                    <dialog id="2">
+                        <div class="elementos">
+                            <div class="box-toten">
+                                <p>Toten 096</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 078</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 021</p>
+                                <img src="./img/vermelho.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 054</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 074</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                        </div>
+                        <div class="espaco-btn">
+                            <button >Fechar</button>
+                        </div>
+                    </dialog>       
+
+                    <dialog id="3">
+                        <div class="elementos">
+                            <div class="box-toten">
+                                <p>Toten 096</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 078</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 021</p>
+                                <img src="./img/vermelho.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 054</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 044</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 074</p>
+                                <img src="./img/vermelho.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                        </div>
+                        <div class="espaco-btn">
+                            <button >Fechar</button>
+                        </div>
+                    </dialog> 
+                    
+                    
+                    <dialog id="4">
+                        <div class="elementos">
+                            <div class="box-toten">
+                                <p>Toten 096</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 078</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            
+                            <div class="box-toten">
+                                <p>Toten 054</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 044</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+                        </div>
+                        <div class="espaco-btn">
+                            <button >Fechar</button>
+                        </div>
+                    </dialog> 
+
+                    
+                    <dialog id="5">
+                        <div class="elementos">
+                            <div class="box-toten">
+                                <p>Toten 096</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 078</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 021</p>
+                                <img src="./img/vermelho.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 054</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 044</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+
+                            <a id="linkEnviarValores" href="informacaoTotem.html?toten=074">
+                                <div class="box-toten">
+                                    <p>Toten 074</p>
+                                    <img src="./img/vermelho.png" width="45px">
+                                    <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                                </div>
+                            </a>
+
+
+                        </div>
+                        <div class="espaco-btn">
+                            <button >Fechar</button>
+                        </div>
+                    </dialog> 
+                    
+                    
+                    <dialog id="6">
+                        <div class="elementos">
+                            <div class="box-toten">
+                                <p>Toten 096</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 078</p>
+                                <img src="./img/cuidado.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 021</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 054</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 044</p>
+                                <img src="./img/verde.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                            <div class="box-toten">
+                                <p>Toten 074</p>
+                                <img src="./img/vermelho.png" width="45px">
+                                <span>Próxima reinicilização: 18/04 às 19h</span>                                
+                            </div>
+
+                        </div>
+                        <div class="espaco-btn">
+                            <button >Fechar</button>
+                        </div>
+                    </dialog> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function sessoesTotens(){
+        var opcaoSelecionada = totens.value;
+
+        if(opcaoSelecionada == 'Franquias'){
+            window.location.assign('index.html')
+        }
+
+        else if(opcaoSelecionada == 'NovoTotem'){
+            window.location.assign('cadastroTotem.html')
+        }
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const botoesDialogo = document.querySelectorAll(".botao-dialogo");
+
+        botoesDialogo.forEach(function(botao) {
+            botao.addEventListener("click", function() {
+                const idDialogo = this.getAttribute("data-target");
+                const dialogo = document.getElementById(idDialogo);
+
+                if (dialogo) {
+                    dialogo.showModal();
+                } else {
+                    console.error("O diálogo com o ID especificado não foi encontrado.");
+                }
+            });
+        });
+
+        const botoesFechar = document.querySelectorAll("dialog button");
+
+        botoesFechar.forEach(function(botao) {
+            botao.addEventListener("click", function() {
+                const dialogo = this.closest("dialog");
+
+                if (dialogo) {
+                    dialogo.close();
+                } else {
+                    console.error("O diálogo não foi encontrado.");
+                }
+            });
+        });
+    });
+</script>

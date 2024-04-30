@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/cadastroTotem.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="container">
+            <div class="barra">
+                <div class="icones">
+                    <div class="box">
+                        <img src="./img/icon-profile.png" >
+                         <span>Gustavo Antunes</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-phone.png">
+                        <span>Chamados</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/franquias.png" >
+                        <span>Franquias</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/publicar.png" >
+                        <span>Novo Toten</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/sair.png">
+                        <span>Sair</span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="container-form">
+                <select name="totens" id="totens" onchange="sessoesTotens()">
+                    <option value="NovoTotem" >Novo Toten</option>
+                    <option value="Franquias">Franquias</option>
+                  </select>
+
+                  <div class="caixa-formulario">
+                    <p>Cadastre seu novo totem!</p>
+
+                    <div class="campos">
+                        <div class="campo">
+                            <span>Código do Totem</span>
+                            <input type="text">
+                        </div>
+    
+                        
+                        <div class="campo">
+                            <span>PASSKEY</span>
+                            <input type="text">
+                        </div>
+
+                        <button>Cadastrar</button>
+                    </div>
+                  </div>
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    function sessoesTotens(){
+        var opcaoSelecionada = totens.value;
+
+        if(opcaoSelecionada == 'Franquias'){
+            window.location.assign('index.html')
+        }
+    }
+</script>

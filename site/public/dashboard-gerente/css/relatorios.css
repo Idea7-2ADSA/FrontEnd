@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap');
+
+/* Todos os elementos da página */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+body{
+    background: linear-gradient(90deg, #FEDD58,#FF924D);
+}
+
+.banner{
+    height: 90vh;
+    padding: 20px;
+}
+
+.banner .container{
+    display: flex;
+}
+
+.barra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 14%;
+    height: 85vh;
+    margin-left: 20px;
+    margin-top: 2%;
+    border-radius: 50px;
+    box-shadow: 2px 2px #0000003d;
+}   
+
+
+.barra .icones .box{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.barra .icones .box img{
+    width: 35px;
+    margin-top: 2px;
+}
+
+.barra .icones .box span{
+    padding: 5px;
+}
+
+
+.container-relatorios select{
+    width: 200px;
+    height: 35px;
+    border: none;
+    border-radius: 25px;
+    margin-left: 100px;
+    text-align: center;
+}
+
+.espaco-relatorio{
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.linhas-relatorio{
+    padding: 25px;    
+    width: 1000px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.linha{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.linha button{
+    cursor: pointer;
+    background-color: #FF924D;
+    color: white;
+    border: none;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.linha button:hover{
+    background-color: #ff7a28;
+}
+
+.linha span{
+    font-weight: bold;
+}
+
+.dados{
+    margin-left: 30%;
+}
+
+.dados span{
+    font-size: 20px;
+    margin-left: 30px;
+}
