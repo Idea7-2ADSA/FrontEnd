@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboards</title>
+    <link rel="stylesheet" href="./css/geral.css">
+    <link rel="stylesheet" href="css/ajustes.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="container" id="container">
+            <div class="barra">
+                <div class="icones">
+                    <div class="box">
+                        <img src="./img/icon-profile.png">
+                        <span>Vitor Tigre</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-home.png">
+                        <span>Geral</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-settings.png">
+                        <span>Ajustes</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-phone.png">
+                        <span>Chamado</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/sair.png">
+                        <span>Sair</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tela-kpi">
+                <div class="container-kpi">
+                    <select name="totens" id="totens" onchange="sessoesTotens()">
+                        <option value="Ajustes">Ajustes</option>
+                        <option value="Geral">Geral</option>
+                        <option value="Totens">Totens</option>
+                        <option value="Historico">Histórico</option>
+                    </select>
+                </div>
+
+                <div class="box-ajustes-kpis">
+                    <div class="kpi-dias-semana">
+                        <div class="opcao">
+                            <h4>Número de totens reiniciados em cada processo de reinicialização</h4>
+                            <select id="qtdTotens" onchange="escolherQtdTotens(this.value)">
+                                <option value="0">Qtd Totens</option>
+                                <option value="1">1 Toten</option>
+                                <option value="2">2 Totens</option>
+                                <option value="3">3 Totens</option>
+                                <option value="4">4 Totens</option>
+                                <option value="5">5 Totens</option>
+                            </select>
+                        </div>
+
+                        <div class="dias">
+                            <h4>Dias para reinicialização</h4>
+                            <div class="dias-semana">
+                                <span>S<button onclick="escolherDia('Segunda')"></button></span>
+                                <span>T<button onclick="escolherDia('Terça')"></button></span>
+                                <span>Q<button onclick="escolherDia('Quarta')"></button></span>
+                                <span>Q<button onclick="escolherDia('Quinta')"></button></span>
+                                <span>S<button onclick="escolherDia('Sexta')"></button></span>
+                                <span>S<button onclick="escolherDia('Sábado')"></button></span>
+                                <span>D<button onclick="escolherDia('Domingo')"></button></span>
+                            </div>
+                        </div>
+
+                        <div class="horas">
+                            <h4>Horário para protocolo de reinicialização</h4>
+                            <input type="time" name="horario" id="horario" onchange="escolherHorario(this.value)">
+                        </div>
+                    </div>
+
+                    <div class="kpi-keyPass">
+                        <div class="dias">
+                            <h4>PASSKEY</h4>
+                            <div class="dias-semana">
+                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
+                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
+                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
+                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function limitarCaracter(element) {
+        element.value = element.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 1);
+    }
+
+    function escolherDia(dia) {
+        var qtdTotens = document.getElementById('qtdTotens').value;
+        var horario = document.getElementById('horario').value;
+        if (qtdTotens > 0) {
+            alert(qtdTotens + ' totens irão reinicializar ' + dia.toLowerCase() + ' às ' + horario);
+        } else {
+            alert('Selecione a quantidade de totens primeiro.');
+        }
+    }
+
+    function escolherQtdTotens(qtdTotens) {
+        if (qtdTotens > 0) {
+            alert('Quantidade de totens escolhida: ' + qtdTotens);
+        } else {
+            alert('Selecione a quantidade de totens maior que zero.');
+        }
+    }
+
+    function escolherHorario(horario) {
+        alert('Horário escolhido: ' + horario);
+    }
+
+    function sessoesTotens() {
+        var opcaoSelecionada = totens.value;
+
+        if (opcaoSelecionada == "Historico") {
+            window.location.assign('historico.html');
+        } else if (opcaoSelecionada == "Geral") {
+            window.location.assign('index.html');
+        } else if (opcaoSelecionada == "Totens") {
+            window.location.assign('totens.html');
+        } else if (opcaoSelecionada == "Ajustes") {
+            window.location.assign('ajustes.html');
+        }
+    }
+</script>

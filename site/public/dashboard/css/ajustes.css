@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+}
+
+body {
+    padding: 0%;
+}
+.barra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 14%;
+    height: 95vh;
+    margin-left: 20px;
+    border-radius: 50px;
+    box-shadow: 2px 2px #0000003d;
+}
+
+.kpi-dias-semana {
+    background-color: white;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 500px;
+    border-radius: 25px;
+    padding: 30px;
+}
+
+.kpi-keyPass {
+    background-color: white;
+    width: 500px;
+    height: 36vh;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-ajustes-kpis {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+}
+
+.tela-kpi {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+    /* align-items: center; */
+    justify-content: center;
+    padding-left: 4%;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.opcao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 10vh;
+}
+
+
+.dias-semana {
+    display: flex;
+    gap: 20px;
+}
+
+.dias-semana button {
+    width: 42px;
+    height: 49px;
+    display: flex;
+    background-color: rgb(198, 198, 198);
+}
+
+.dias-semana input {
+    width: 42px;
+    height: 49px;
+    display: flex;
+    background-color: rgb(198, 198, 198);
+}
+
+.dias-semana span {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    gap: 20px;
+}
+
+.horas {
+    gap: 10px;
+}
+
+.horas h4 {
+    margin-bottom: 20px;
+}
+
+.horas input {
+    height: 30px;
+    width: 80px;
+    background-color: rgb(198, 198, 198);
+}
+
+.opcao select{ 
+     background-color: rgb(198, 198, 198);
+    height: 40px;}
