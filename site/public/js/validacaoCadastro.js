@@ -1,17 +1,15 @@
 function cadastrar() {
     var nomeCadastro = nome.value
-    var cnpjCadastro = cnpj.value
     var cepCadastro = cep.value
     var emailCadastro = email.value
     var senhaCadastro = senha.value
     var confirmacaoSenha = confirmacao_senha.value
     validarNome(nomeCadastro)
-    validarCnpj(cnpjCadastro)
     validarCep(cepCadastro)
     validarEmail(emailCadastro)
     validarSenha(senhaCadastro, confirmacaoSenha)
 
-    if(validarNome && validarCnpj && validarCep && validarEmail && validarSenha) {
+    if(validarNome && validarCep && validarEmail && validarSenha) {
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -19,7 +17,6 @@ function cadastrar() {
             },
             body: JSON.stringify({
                 nomeServer: nomeCadastro,
-                cnpjServer: cnpjCadastro,
                 cepServer: cepCadastro,
                 emailServer: emailCadastro,
                 senhaServer: senhaCadastro
@@ -29,7 +26,7 @@ function cadastrar() {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    
+                    window.location = "./login.html"
                 } else {
                     if (resposta.status == 401) {
                         alert(`O email cadastrado já existe!`)
@@ -47,14 +44,6 @@ function cadastrar() {
 
 function validarNome(nome) {
     if(nome.length >= 3 && nome.match(/[A-Z][a-z].*/ig)) {
-        return true
-    }else {
-        return false
-    }
-}
-
-function validarCnpj(cnpj) {
-    if(cnpj.match(/[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2}/)) {
         return true
     }else {
         return false

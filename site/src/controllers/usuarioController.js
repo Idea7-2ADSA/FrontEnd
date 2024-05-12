@@ -11,26 +11,46 @@ function autenticar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`);
+        usuarioModel.autenticarGerente(email, senha)
+            .then((resultadoAutenticarGerente) => {
+                console.log(`\nResultado encontrados: ${resultadoAutenticarGerente.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticarGerente)}`);
 
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-                        res.json({
-                            idUsuario: resultadoAutenticar[0].idUsuario,
-                            email: resultadoAutenticar[0].email
-                        });
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } 
+                if(resultadoAutenticarGerente.length == 1) {
+                    res.status(201).json({
+                        id: resultadoAutenticarGerente[0].idGerente,
+                        nome: resultadoAutenticarGerente[0].nome,
+                        email: resultadoAutenticarGerente[0].email
+                    });
+                }else if(resultadoAutenticarGerente.length == 0) {
+                    usuarioModel.autenticarTecnico(email, senha)
+                        .then((resultadoAutenticarTecnico) => {
+                            console.log(`\nResultado encontrados: ${resultadoAutenticarTecnico.length}`);
+                            console.log(`Resultados: ${JSON.stringify(resultadoAutenticarTecnico)}`);
+                            if(resultadoAutenticarTecnico.length == 1) {
+                                res.status(202).json({
+                                    id: resultadoAutenticarTecnico[0].idTecnico,
+                                    nome: resultadoAutenticarTecnico[0].nome,
+                                    email: resultadoAutenticarTecnico[0].email 
+                                });
+                            }else {
+                                res.status(403).send("Email e/ou senha inválido(s)")
+                            }
+                        }
+                        ).catch((erro) => {
+                            console.log(erro);
+                            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                            console.log("Erro no login tecnico!")
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                        );
                 }
+            }
             ).catch(
                 function (erro) {
                     console.log(erro);
                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    console.log("Erro no login gerente!")
                     res.status(500).json(erro.sqlMessage);
                 }
             );
@@ -40,15 +60,12 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     var nome = req.body.nomeServer;
-    var cnpj = req.body.cnpjServer;
     var cep = req.body.cepServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    }else if(cnpj == undefined) {
-        res.status(400).send("Seu cnpj está undefined!");
     } else if(cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
     }else if (email == undefined) {
