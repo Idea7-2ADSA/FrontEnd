@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style_cadastro.css">
     <link rel="stylesheet" href="css/footer_e_header.css">
+    <script src="js/validacaoCadastro.js"></script>
 </head>
 <body>
     <header>
@@ -39,17 +40,6 @@
                     <input type="text" class="input" id="nome" required>
                     <label for="nome">Nome</label>
                 </div>
-                
-                <div class="campo">
-                    <input type="text" class="input" id="cnpj" required>
-                    <label for="cnpj">Cnpj</label>
-                </div>
-        
-                
-                <div class="campo">
-                    <input type="text" class="input" id="qtd_gerentes" required>
-                    <label for="qtd_gerentes">Quantidade de Gerentes</label>
-                </div>
         
                 <div class="campo">
                     <input type="text" class="input" id="cep" required>
@@ -72,7 +62,7 @@
                 </div>
         
                 <div class="button">
-                    <button>Cadastre-se</button>
+                    <button onclick="cadastrar()">Cadastre-se</button>
                     <a href="#">Já possui cadastro? <span>Login</span></a>
                 </div>
             </div>
