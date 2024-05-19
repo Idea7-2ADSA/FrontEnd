@@ -17,7 +17,7 @@
                 <div class="icones">
                     <div class="box">
                         <img src="./img/icon-profile.png">
-                        <span>Vitor Tigre</span>
+                        <span>Maria Julia</span>
                     </div>
 
                     <div class="box">
@@ -52,10 +52,11 @@
                     </select>
                 </div>
 
+                <div class="espaco">
                 <div class="box-ajustes-kpis">
                     <div class="kpi-dias-semana">
                         <div class="opcao">
-                            <h4>Número de totens reiniciados em cada processo de reinicialização</h4>
+                            <h4>Numero de totens que serão reincializados a cada bloco de reinicialização <span class="botao-dialogo" data-target="1">❓</span></h4>
                             <select id="qtdTotens" onchange="escolherQtdTotens(this.value)">
                                 <option value="0">Qtd Totens</option>
                                 <option value="1">1 Toten</option>
@@ -67,37 +68,76 @@
                         </div>
 
                         <div class="dias">
-                            <h4>Dias para reinicialização</h4>
+                            <h4>Dias em que os totens serão reinicializados</h4>
                             <div class="dias-semana">
-                                <span>S<button onclick="escolherDia('Segunda')"></button></span>
-                                <span>T<button onclick="escolherDia('Terça')"></button></span>
-                                <span>Q<button onclick="escolherDia('Quarta')"></button></span>
-                                <span>Q<button onclick="escolherDia('Quinta')"></button></span>
-                                <span>S<button onclick="escolherDia('Sexta')"></button></span>
-                                <span>S<button onclick="escolherDia('Sábado')"></button></span>
-                                <span>D<button onclick="escolherDia('Domingo')"></button></span>
+                                <div class="boxes">
+                                    <div class="box">
+                                        <input type="checkbox" id="checkbox1" value="Segunda">
+                                        <span>S</span>
+                                    </div>
+
+                                    <div class="box">
+                                        <input type="checkbox" id="checkbox2" value="Terca">
+                                        <span>T</span>
+                                    </div>
+
+                                    <div class="box">
+                                        <input type="checkbox" id="checkbox3" value="Quarta">
+                                        <span>Q</span>
+                                    </div>
+
+                                    <div class="box">
+                                        <input type="checkbox" id="checkbox4" value="Quinta">
+                                        <span>Q</span>
+                                    </div>
+
+                                    <div class="box">
+                                        <input type="checkbox" id="checkbox5" value="Sexta">
+                                        <span>S</span>
+                                    </div>
+
+                                    <div class="box">
+                                        <input type="checkbox" id="checkbox6" value="Sabado">
+                                        <span>S</span>
+                                    </div>
+
+                                    <div class="box">
+                                        <input type="checkbox" id="checkbox7" value="Domingo">
+                                        <span>D</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="horas">
-                            <h4>Horário para protocolo de reinicialização</h4>
-                            <input type="time" name="horario" id="horario" onchange="escolherHorario(this.value)">
+                            <h4>Horário em que os totens serão reinicializados</h4>
+                            <input type="time" name="horario" id="horario">
+                        </div>
+
+                        <div class="botao-salvar">
+                            <button onclick="teste()">Salvar alterções</button>
                         </div>
                     </div>
 
-                    <div class="kpi-keyPass">
-                        <div class="dias">
-                            <h4>PASSKEY</h4>
-                            <div class="dias-semana">
-                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
-                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
-                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
-                                <input type="text" maxlength="1" oninput="limitarCaracter(this)">
-                            </div>
+                    
+                </div>
+            </div>  
+            </div>
+
+            <div class="espaco-modal">
+                <dialog id="1">
+                    <div class="elementos">
+                        <div class="texto">
+                            <span>Um bloco de reinicialização determina quantos totens serão reiniciados dentro de um período específico. Para ilustrar, imagine que sua franquia possua 6 totens. Se você definir que 2 totens serão reiniciados em um bloco, esses 2 totens serão reiniciados enquanto os outros 4 permanecerão funcionando normalmente.</span>
+                            <img src="img/totens.jpg" alt="">
+                        <div class="espaco-btn">
+                            <button >Fechar</button>
+                        </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </dialog>      
+        </div>
+
         </div>
     </div>
 </body>
@@ -105,32 +145,7 @@
 </html>
 
 <script>
-    function limitarCaracter(element) {
-        element.value = element.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 1);
-    }
-
-    function escolherDia(dia) {
-        var qtdTotens = document.getElementById('qtdTotens').value;
-        var horario = document.getElementById('horario').value;
-        if (qtdTotens > 0) {
-            alert(qtdTotens + ' totens irão reinicializar ' + dia.toLowerCase() + ' às ' + horario);
-        } else {
-            alert('Selecione a quantidade de totens primeiro.');
-        }
-    }
-
-    function escolherQtdTotens(qtdTotens) {
-        if (qtdTotens > 0) {
-            alert('Quantidade de totens escolhida: ' + qtdTotens);
-        } else {
-            alert('Selecione a quantidade de totens maior que zero.');
-        }
-    }
-
-    function escolherHorario(horario) {
-        alert('Horário escolhido: ' + horario);
-    }
-
+    
     function sessoesTotens() {
         var opcaoSelecionada = totens.value;
 
@@ -144,4 +159,54 @@
             window.location.assign('ajustes.html');
         }
     }
+
+    function teste(){
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var valoresSelecionados = [];
+
+        // checkboxes.forEach(function(checkbox) {
+        //     if (checkbox.checked) {
+        //         valoresSelecionados.push(checkbox.value);
+        //     }
+        // });
+
+        // if (valoresSelecionados.length > 0) {
+        //     alert("Valores selecionados: " + valoresSelecionados.join(', '));
+        // } else {
+        //     alert("Nenhum valor selecionado.");
+        // }
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const botoesDialogo = document.querySelectorAll(".botao-dialogo");
+
+        botoesDialogo.forEach(function(botao) {
+            botao.addEventListener("click", function() {
+                const idDialogo = this.getAttribute("data-target");
+                const dialogo = document.getElementById(idDialogo);
+
+                if (dialogo) {
+                    dialogo.showModal();
+                } else {
+                    console.error("O diálogo com o ID especificado não foi encontrado.");
+                }
+            });
+        });
+
+        const botoesFechar = document.querySelectorAll("dialog button");
+
+        botoesFechar.forEach(function(botao) {
+            botao.addEventListener("click", function() {
+                const dialogo = this.closest("dialog");
+
+                if (dialogo) {
+                    dialogo.close();
+                } else {
+                    console.error("O diálogo não foi encontrado.");
+                }
+            });
+        });
+    });
 </script>
