@@ -1,31 +1,46 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap');
+
+/* Todos os elementos da página */
+*{
     margin: 0;
+    padding: 0;
+    font-family: "Poppins",sans-serif;
 }
 
-body {
-    padding: 0%;
+body{
+    background: linear-gradient(90deg, #FEDD58,#FF924D);
 }
-.barra {
+
+.banner{
+    height: 90vh;
+    padding: 20px;
+}
+
+
+
+.barra{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: white;
     width: 14%;
-    height: 95vh;
+    height: 80vh;
     margin-left: 20px;
+    margin-top: 3%;
     border-radius: 50px;
     box-shadow: 2px 2px #0000003d;
 }
 
 .kpi-dias-semana {
     background-color: white;
-    height: 60vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 500px;
+    justify-content: center;
+    width: 750px;
     border-radius: 25px;
     padding: 30px;
 }
@@ -40,11 +55,6 @@ body {
     justify-content: center;
 }
 
-.box-ajustes-kpis {
-    display: flex;
-    justify-content: center;
-    gap: 70px;
-}
 
 .tela-kpi {
     display: flex;
@@ -67,10 +77,16 @@ body {
     height: 10vh;
 }
 
-
-.dias-semana {
+.dias-semana{
     display: flex;
-    gap: 20px;
+}
+
+.dias-semana .boxes{
+    display: flex;
+}
+
+.box{
+    padding: 10px;
 }
 
 .dias-semana button {
@@ -92,6 +108,27 @@ body {
     flex-direction: column;
 }
 
+.botao-salvar{
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.botao-salvar button{
+    cursor: pointer;
+    background-color: #FF924D;
+    color: white;
+    border: none;
+    width: 180px;
+    height: 50px;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.botao-salvar button:hover{
+    background-color: #ff7a28;
+}
+
 
 .dias {
     display: flex;
@@ -106,6 +143,10 @@ body {
     gap: 10px;
 }
 
+.horas input{
+    text-align: center;
+}
+
 .horas h4 {
     margin-bottom: 20px;
 }
@@ -116,6 +157,77 @@ body {
     background-color: rgb(198, 198, 198);
 }
 
+
+.opcao span{
+    background-color: #e2e2e2;
+    border-radius: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+    padding: 3px;
+}
+
 .opcao select{ 
      background-color: rgb(198, 198, 198);
-    height: 40px;}
+    height: 85px;}
+
+.espaco{
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+dialog {
+    background-color:  rgb(214, 214, 214);
+    margin-left: 33%;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 10em rgba(0, 0, 0, 0.54);
+    width: 50%;
+    margin-top: 6%;
+}
+
+.elementos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.texto{
+    padding: 35px;
+}
+
+.texto img{
+    display: flex;
+    margin-left: 10%;
+    padding: 25px;
+    width: 500px;
+    height: 300px;
+}
+
+.espaco-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.espaco-btn button{
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-top: 25px;
+}
