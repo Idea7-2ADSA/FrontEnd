@@ -7,6 +7,7 @@
     <title>Tela Login</title>
     <link rel="stylesheet" href="./css/style_login.css">
     <link rel="stylesheet" href="css/footer_e_header.css">
+    <script src="js/validacaoLogin.js"></script>
 </head>
 
 <body>
@@ -38,13 +39,13 @@
             </div>
 
             <div class="campo">
-                <input type="text" class="input" id="cep" required>
+                <input type="password" class="input" id="senha" required>
                 <label for="senha">Senha</label>
             </div>
             
             <div class="button">
-                <button>Log-in</button>
-                <a href="cadastro.html">Não possui cadastro? <span>Cadastre-se</span></a>
+                <button onclick="login()">Log-in</button>
+                <a href="./cadastro.html">Não possui cadastro? <span>Cadastre-se</span></a>
             </div>
         </div>
         
