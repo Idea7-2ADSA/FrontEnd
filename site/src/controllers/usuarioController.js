@@ -20,7 +20,8 @@ function autenticar(req, res) {
                     res.status(201).json({
                         id: resultadoAutenticarGerente[0].idGerente,
                         nome: resultadoAutenticarGerente[0].nome,
-                        email: resultadoAutenticarGerente[0].email
+                        email: resultadoAutenticarGerente[0].email,
+                        franquia: resultadoAutenticarGerente[0].fkFranquia
                     });
                 }else if(resultadoAutenticarGerente.length == 0) {
                     usuarioModel.autenticarTecnico(email, senha)

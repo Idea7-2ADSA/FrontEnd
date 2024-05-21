@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/cadastroTotem.css">
+    <script src="../js/cadastrarTotem.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -51,16 +52,16 @@
                     <div class="campos">
                         <div class="campo">
                             <span>Código do Totem</span>
-                            <input type="text">
+                            <input type="text" id="codigoTotemCadastro">
                         </div>
     
                         
                         <div class="campo">
                             <span>PASSKEY</span>
-                            <input type="text">
+                            <input type="password" id="senhaCadastroTotem">
                         </div>
 
-                        <button>Cadastrar</button>
+                        <button onclick="cadastrarTotem()">Cadastrar</button>
                     </div>
                   </div>
                
