@@ -11,6 +11,7 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var totemRouter = require("./src/routes/totem")
+var ajusteRouter = require("./src/routes/ajuste")
 
 
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/totem", totemRouter);
+app.use("/ajuste", ajusteRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
