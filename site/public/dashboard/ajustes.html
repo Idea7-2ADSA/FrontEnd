@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/geral.css">
     <link rel="stylesheet" href="css/ajustes.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/ajustarParametros.js"></script>
 </head>
 
 <body>
@@ -60,37 +61,37 @@
                             <div class="dias-semana">
                                 <div class="boxes">
                                     <div class="box">
-                                        <input type="checkbox" id="checkbox1" value="Segunda">
+                                        <input type="checkbox" id="checkbox1" value="1">
                                         <span>S</span>
                                     </div>
 
                                     <div class="box">
-                                        <input type="checkbox" id="checkbox2" value="Terca">
+                                        <input type="checkbox" id="checkbox2" value="2">
                                         <span>T</span>
                                     </div>
 
                                     <div class="box">
-                                        <input type="checkbox" id="checkbox3" value="Quarta">
+                                        <input type="checkbox" id="checkbox3" value="3">
                                         <span>Q</span>
                                     </div>
 
                                     <div class="box">
-                                        <input type="checkbox" id="checkbox4" value="Quinta">
+                                        <input type="checkbox" id="checkbox4" value="4">
                                         <span>Q</span>
                                     </div>
 
                                     <div class="box">
-                                        <input type="checkbox" id="checkbox5" value="Sexta">
+                                        <input type="checkbox" id="checkbox5" value="5">
                                         <span>S</span>
                                     </div>
 
                                     <div class="box">
-                                        <input type="checkbox" id="checkbox6" value="Sabado">
+                                        <input type="checkbox" id="checkbox6" value="6">
                                         <span>S</span>
                                     </div>
 
                                     <div class="box">
-                                        <input type="checkbox" id="checkbox7" value="Domingo">
+                                        <input type="checkbox" id="checkbox7" value="7">
                                         <span>D</span>
                                     </div>
                                 </div>
@@ -103,7 +104,7 @@
                         </div>
 
                         <div class="botao-salvar">
-                            <button onclick="teste()">Salvar alterções</button>
+                            <button onclick="ajustarParametros()">Salvar alterções</button>
                         </div>
                     </div>
 
@@ -111,21 +112,6 @@
                 </div>
             </div>  
             </div>
-
-            <div class="espaco-modal">
-                <dialog id="1">
-                    <div class="elementos">
-                        <div class="texto">
-                            <span>Um bloco de reinicialização determina quantos totens serão reiniciados dentro de um período específico. Para ilustrar, imagine que sua franquia possua 6 totens. Se você definir que 2 totens serão reiniciados em um bloco, esses 2 totens serão reiniciados enquanto os outros 4 permanecerão funcionando normalmente.</span>
-                            <img src="img/totens.jpg" alt="">
-                        <div class="espaco-btn">
-                            <button >Fechar</button>
-                        </div>
-                        </div>
-                    </div>
-                </dialog>      
-        </div>
-
         </div>
     </div>
 </body>
@@ -148,53 +134,4 @@
         }
     }
 
-    function teste(){
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        var valoresSelecionados = [];
-
-        // checkboxes.forEach(function(checkbox) {
-        //     if (checkbox.checked) {
-        //         valoresSelecionados.push(checkbox.value);
-        //     }
-        // });
-
-        // if (valoresSelecionados.length > 0) {
-        //     alert("Valores selecionados: " + valoresSelecionados.join(', '));
-        // } else {
-        //     alert("Nenhum valor selecionado.");
-        // }
-    }
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const botoesDialogo = document.querySelectorAll(".botao-dialogo");
-
-        botoesDialogo.forEach(function(botao) {
-            botao.addEventListener("click", function() {
-                const idDialogo = this.getAttribute("data-target");
-                const dialogo = document.getElementById(idDialogo);
-
-                if (dialogo) {
-                    dialogo.showModal();
-                } else {
-                    console.error("O diálogo com o ID especificado não foi encontrado.");
-                }
-            });
-        });
-
-        const botoesFechar = document.querySelectorAll("dialog button");
-
-        botoesFechar.forEach(function(botao) {
-            botao.addEventListener("click", function() {
-                const dialogo = this.closest("dialog");
-
-                if (dialogo) {
-                    dialogo.close();
-                } else {
-                    console.error("O diálogo não foi encontrado.");
-                }
-            });
-        });
-    });
 </script>
