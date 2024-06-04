@@ -17,12 +17,21 @@ function autenticar(req, res) {
                 console.log(`Resultados: ${JSON.stringify(resultadoAutenticarGerente)}`);
 
                 if(resultadoAutenticarGerente.length == 1) {
-                    res.status(201).json({
-                        id: resultadoAutenticarGerente[0].idGerente,
-                        nome: resultadoAutenticarGerente[0].nome,
-                        email: resultadoAutenticarGerente[0].email,
-                        franquia: resultadoAutenticarGerente[0].fkFranquia
-                    });
+                    usuarioModel.buscarDadosFranquia(resultadoAutenticarGerente[0].fkFranquia)
+                    .then((resFranquia) => {
+                        res.status(201).json({
+                            id: resultadoAutenticarGerente[0].idGerente,
+                            nome: resultadoAutenticarGerente[0].nome,
+                            email: resultadoAutenticarGerente[0].email,
+                            franquia: resultadoAutenticarGerente[0].fkFranquia,
+                            cepFranquia: resFranquia[0].cep
+                        });
+                    }).catch((erro) => {
+                        console.log(erro);
+                        console.log("\nHouve um erro ao buscar o cep! Erro: ", erro.sqlMessage);
+                        console.log("Erro no login tecnico!")
+                        res.status(500).json(erro.sqlMessage);
+                    })
                 }else if(resultadoAutenticarGerente.length == 0) {
                     usuarioModel.autenticarTecnico(email, senha)
                         .then((resultadoAutenticarTecnico) => {
@@ -64,6 +73,8 @@ function cadastrar(req, res) {
     var cep = req.body.cepServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var cpf = req.body.cpfServer;
+    var telefone = req.body.telefoneServer
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -73,12 +84,16 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else {
+    }else if(cpf == undefined) {
+        res.status(400).send("Seu cpf está undefined!");
+    }else if(telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    }else {
         franquiaModel.consultarFranquia(cep)
         .then(
             (resFranquia) => {
                 if(resFranquia.length > 0) {
-                    usuarioModel.cadastrar(nome, email, senha, resFranquia[0].idFranquia, resFranquia[0].fkEmpresa)
+                    usuarioModel.cadastrar(nome, cpf, telefone, email, senha, resFranquia[0].idFranquia, resFranquia[0].fkEmpresa)
                     .then(
                         function (resultado) {
                             res.json(resultado);
