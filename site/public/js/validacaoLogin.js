@@ -22,6 +22,7 @@ function login() {
                     sessionStorage.EMAIL = json.email
                     if(resposta.status == 201) {
                         sessionStorage.IDFRANQUIA = json.franquia
+                        sessionStorage.CEPFRANQUIA = json.cepFranquia
                         window.location = "./dashboard/index.html"
                     }else if(resposta.status == 202) {
                         window.location = "./dashboard-tecnico/index.html"
