@@ -8,6 +8,15 @@ function cadastrar(codigoTotem, idFranquia, fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function buscarAlertas(fkTotem) {
+    instrucao = `
+        SELECT a.tipoAlerta, t.codigoTotem AS fkTotem FROM (SELECT * FROM alerta WHERE dataAlerta = CURDATE() AND fkTotem = ${fkTotem} ORDER BY idAlerta DESC LIMIT 1) AS a RIGHT JOIN (SELECT ${fkTotem} AS codigoTotem) AS t ON a.fkTotem = t.codigoTotem;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    cadastrar
+    cadastrar,
+    buscarAlertas
 }

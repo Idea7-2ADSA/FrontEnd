@@ -65,6 +65,34 @@ function cadastrarTotem(req, res) {
         )
     }
 }
+
+function buscarAlertas(req, res) {
+    var totens = req.body.totensServer
+    var listaDados = []
+    if (totens == null) {
+        res.status(400).send("A lista de totens está nula")
+    } else {
+        for (let i = 0; i < totens.length; i++) {
+            totemModel.buscarAlertas(Number(totens[i]))
+            .then((resAlerta) => {
+                listaDados.push(resAlerta)
+                if (listaDados.length >= totens.length) {
+                    res.json(listaDados)
+                }
+            }).catch((erro) => {
+                console.log(erro)
+                console.log(
+                    "\nHouve um erro ao buscar os alertas! Erro:",
+                    erro.sqlMessage
+                )
+                res.status(500).json(erro.sqlMessage)
+            })
+                
+        }
+    }
+}
+
 module.exports = {
-    cadastrarTotem
+    cadastrarTotem,
+    buscarAlertas
 }
