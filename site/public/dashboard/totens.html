@@ -81,14 +81,7 @@
   <script>
     window.onload = function () {
       nomeGerente.innerHTML = sessionStorage.NOME;
-      for (i = 0; i < 9; i++) {
-        kpis.innerHTML += `
-                <div class="box-toten">
-                    <p>Toten ${i + 1}</p>
-                    <img src="./img/verde.png" width="45px">
-                    <span>Próxima reinicialização: 18/04 às 19h</span>
-                </div>`;
-      }
+      buscarAlertas()
     };
 
     function sessoesTotens() {
@@ -104,3 +97,4 @@
     }
   </script>
 </html>
+<script src="../js/totensGerente.js"></script>

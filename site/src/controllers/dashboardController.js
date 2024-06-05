@@ -45,7 +45,4 @@ function buscarDados(req, res) {
     }
 }
 
-module.exports = {
-    buscarTotens,
-    buscarDados
-}
+module.exports = {buscarTotens,buscarDados}
