@@ -20,6 +20,7 @@ function login() {
                     sessionStorage.ID = json.id
                     sessionStorage.NOME = json.nome
                     sessionStorage.EMAIL = json.email
+                    sessionStorage.CPF = json.cpf
                     if(resposta.status == 201) {
                         sessionStorage.IDFRANQUIA = json.franquia
                         window.location = "./dashboard/index.html"
