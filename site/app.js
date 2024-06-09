@@ -14,6 +14,7 @@ var totemRouter = require("./src/routes/totem")
 var ajusteRouter = require("./src/routes/ajuste")
 var dashboardRouter = require("./src/routes/dashboard")
 var kpiRouter = require("./src/routes/kpi")
+var franquiaRouter = require("./src/routes/franquia")
 
 
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use("/totem", totemRouter);
 app.use("/ajuste", ajusteRouter)
 app.use("/dashboard", dashboardRouter);
 app.use("/kpi", kpiRouter);
+app.use("/franquia", franquiaRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

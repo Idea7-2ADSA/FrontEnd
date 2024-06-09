@@ -162,7 +162,8 @@ function buscarDadosKpi3() {
                     let minuto = new Date().getMinutes()
                     let valorEmReal = (totensInativos.length * 100).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
                     valorPerda.innerHTML = `R$ ${valorEmReal}`
-                    data_horario_calculo.innerHTML = `Cálculo feito em  ${mes}/${dia} às ${hora}:${minuto}` 
+                    console.log(mes)
+                    data_horario_calculo.innerHTML = `Cálculo feito em  ${mes + 1}/${dia} às ${hora}:${minuto}` 
                     atualizarKpis()
                 })
                

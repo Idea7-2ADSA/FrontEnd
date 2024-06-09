@@ -92,7 +92,94 @@ function buscarAlertas(req, res) {
     }
 }
 
+function buscarUltimoAlerta(req, res) {
+ var totem = req.body.totemServer
+    if (totem == null) {
+        res.status(400).send("O totem está nulo")
+    } else {
+        totemModel.buscarAlertas(totem)
+        .then((resAlerta) => {
+            res.json(resAlerta)
+        }).catch((erro) => {
+            console.log(erro)
+            console.log(
+                "\nHouve um erro ao buscar o ultimo alerta! Erro:",
+                erro.sqlMessage
+            )
+            res.status(500).json(erro.sqlMessage)
+        })
+    }
+}
+
+function buscarDadoComponente(req, res) {
+    var totem = req.body.totemServer
+    var componente = req.body.componenteServer
+    if (totem == null) {
+        res.status(400).send("O totem está nulo")
+    }else if(componente == null) {
+        res.status(400).send("O componente está nulo")
+    } else {
+        totemModel.buscarComponente(totem, componente)
+            .then((resComponente) => {
+                totemModel.buscarDadoHardWare(resComponente[0].idHardWare, totem)
+                .then((resDadoComponente)=> {
+                    res.json(resDadoComponente)
+                }).catch((erro)=> {
+                    console.log(erro)
+                    console.log(
+                        "\nHouve um erro ao buscar o ultimo dado! Erro:",
+                        erro.sqlMessage
+                    )
+                    res.status(500).json(erro.sqlMessage)    
+                })
+            }).catch((erro) => {
+                console.log(erro)
+                console.log(
+                    "\nHouve um erro ao buscar o componentem! Erro:",
+                    erro.sqlMessage
+                )
+                res.status(500).json(erro.sqlMessage)
+            })
+    }
+}
+
+function buscarDadosComponente(req, res) {
+    var totem = req.body.totemServer
+    var componente = req.body.componenteServer
+
+    if (totem == null) {
+        res.status(400).send("O totem está nulo")
+    }else if(componente == null) {
+        res.status(400).send("O componente está nulo")
+    } else {
+        totemModel.buscarComponente(totem, componente)
+            .then((resComponente) => {
+                totemModel.buscarDadosHardWare(resComponente[0].idHardWare, totem)
+                    .then((resDadoComponente) => {
+                        res.json(resDadoComponente)
+                    }).catch((erro) => {
+                        console.log(erro)
+                        console.log(
+                            "\nHouve um erro ao buscar o ultimo dado! Erro:",
+                            erro.sqlMessage
+                        )
+                        res.status(500).json(erro.sqlMessage)
+                    })
+            }).catch((erro) => {
+                console.log(erro)
+                console.log(
+                    "\nHouve um erro ao buscar o componentem! Erro:",
+                    erro.sqlMessage
+                )
+                res.status(500).json(erro.sqlMessage)
+            })
+    }
+}
+
 module.exports = {
     cadastrarTotem,
-    buscarAlertas
+    buscarAlertas,
+    buscarUltimoAlerta,
+    buscarDadoComponente,
+    buscarDadosComponente
 }

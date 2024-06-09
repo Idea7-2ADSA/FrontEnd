@@ -1,9 +1,11 @@
+let ultimosAlertas = []
 function buscarAlertas() {
     let totensSessionStorage = sessionStorage.TOTENSFRANQUIA
     let totensFranquia = totensSessionStorage.split(",")
     let diaReinicializacao = sessionStorage.DIAREINICIALIZACAO
     let horarioReinicializacao = sessionStorage.HORAREINICIALIZACAO
-    fetch("/totem/buscarAlerta", {
+    let repeticao = 0
+    fetch("/totem/buscarAlertas", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -16,25 +18,42 @@ function buscarAlertas() {
             console.log("resposta: ", resposta);
             if (resposta.ok) {
                 resposta.json().then(json => {
+                    console.log(json)
                     let tipoAlertaImg
                     kpis.innerHTML = ""
-                        for (i = 0; i < json.length; i++) {
-                            if (json[i][0].tipoAlerta == "VERDE") {
-                                tipoAlertaImg = '<img src="./img/verde.png" width="45px">'
-                            } else if (json[i][0].tipoAlerta == "AMARELO") {
-                                tipoAlertaImg = '<img src="./img/cuidado.png" width="45px">'
-                            } else if (json[i][0].tipoAlerta == "VERMELHO") {
-                                tipoAlertaImg = '<img src="./img/laranja.png" width="45px">'
-                            }else {
-                                tipoAlertaImg = '<img src="./img/vermelho.png" width="45px">'
+                    for (i = 0; i < json.length; i++) {
+                        for (let j = 0; j < ultimosAlertas.length; j++) {
+                            if (ultimosAlertas[j].idTotem == json[i][0].fkTotem) {
+                                if (ultimosAlertas[j].idUltimoAlerta == json[i][0].idAlerta) {
+                                    repeticao = ultimosAlertas[j].repeticaoAlerta + 1
+                                } else {
+                                    repeticao = 0
+                                }
+                                ultimosAlertas.splice(j, 1)
                             }
-                            kpis.innerHTML += `
+                        }
+                        if (json[i][0].tipoAlerta == "VERDE" && repeticao < 2) {
+                            tipoAlertaImg = '<img src="./img/verde.png" width="45px">'
+                        } else if (json[i][0].tipoAlerta == "AMARELO" && repeticao < 2) {
+                            tipoAlertaImg = '<img src="./img/cuidado.png" width="45px">'
+                        } else if (json[i][0].tipoAlerta == "VERMELHO" && repeticao < 2) {
+                            tipoAlertaImg = '<img src="./img/laranja.png" width="45px">'
+                        } else {
+                            tipoAlertaImg = '<img src="./img/vermelho.png" width="45px">'
+                        }
+                        ultimosAlertas.push({
+                            idUltimoAlerta: json[i][0].idAlerta,
+                            idTotem: json[i][0].fkTotem,
+                            repeticaoAlerta: repeticao
+                        })
+                        kpis.innerHTML += `
                             <div class="box-toten">
                                 <p>Toten ${json[i][0].fkTotem}</p>
                                 ${tipoAlertaImg}
                                 <span>Próxima reinicialização: ${diaReinicializacao}, ${horarioReinicializacao}h</span>
                             </div>`;
-                        }
+                    }
+                    atualizarTotens()
                 })
             } else {
                 throw "Houve um erro ao tentar realizar o cadastro!";
@@ -47,5 +66,7 @@ function buscarAlertas() {
 }
 
 function atualizarTotens() {
-
+    setTimeout(() => {
+        buscarAlertas()
+    }, 15000);
 }
