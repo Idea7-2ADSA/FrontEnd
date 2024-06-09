@@ -1,5 +1,6 @@
 let totalTotensComAlerta
-let totensFranquia = sessionStorage.TOTENSFRANQUIA.split(",")
+let totensSessionStorage = sessionStorage.TOTENSFRANQUIA
+let totensFranquia = totensSessionStorage.split(",")
 function buscarDadosKpi1() {
     totalTotensComAlerta = 0
     fetch("/kpi/buscarDados", {
@@ -50,32 +51,41 @@ function buscarDadosKpi2() {
             if (resposta.ok) {
                 resposta.json().then(json => {
                     let diasReinicializacao = json[0].diaReinicializacao
-                    let listaDiasReinicializacao = diasReinicializacao.split(',')
+                    let listaDiasReinicializacao
+                    if(diasReinicializacao.length > 1) {
+                        listaDiasReinicializacao = diasReinicializacao.split(',')
+                    }else {
+                        listaDiasReinicializacao = [diasReinicializacao]
+                    } 
                     let proximoDia;
                     let diaEncontrado = false
                     for (let data = new Date().getDay(); data <= 6; data++) {
                         if (data == 6) {
+                            data = -1
                             proximoDia = 0
                         } else {
                             proximoDia = data + 1
                         }
                         for (let i = 0; i < listaDiasReinicializacao.length; i++) {
                             if (listaDiasReinicializacao[i] == proximoDia) {
+                                let diaDaSemana
                                 if (listaDiasReinicializacao[i] == 0) {
-                                    diaReinicializacao.innerHTML = 'Domingo'
+                                    diaDaSemana = 'Domingo'
                                 } else if (listaDiasReinicializacao[i] == 1) {
-                                    diaReinicializacao.innerHTML = 'Segunda-Feira'
+                                    diaDaSemana = 'Segunda-Feira'
                                 } else if (listaDiasReinicializacao[i] == 2) {
-                                    diaReinicializacao.innerHTML = 'Terça-Feira'
+                                    diaDaSemana = 'Terça-Feira'
                                 } else if (listaDiasReinicializacao[i] == 3) {
-                                    diaReinicializacao.innerHTML = 'Quarta-Feira'
+                                    diaDaSemana = 'Quarta-Feira'
                                 } else if (listaDiasReinicializacao[i] == 4) {
-                                    diaReinicializacao.innerHTML = 'Quinta-Feira'
+                                    diaDaSemana = 'Quinta-Feira'
                                 } else if (listaDiasReinicializacao[i] == 5) {
-                                    diaReinicializacao.innerHTML = 'Sexta-Feira'
+                                    diaDaSemana = 'Sexta-Feira'
                                 } else if (listaDiasReinicializacao[i] == 6) {
-                                    diaReinicializacao.innerHTML = 'Sábado'
+                                    diaDaSemana = 'Sábado'
                                 }
+                                diaReinicializacao.innerHTML = diaDaSemana
+                                sessionStorage.DIAREINICIALIZACAO = diaDaSemana
                                 diaEncontrado = true
                             }
                         }
@@ -86,6 +96,7 @@ function buscarDadosKpi2() {
                     horario = json[0].horaReinicializacao
                     listaSplitHorario = horario.split(":")
                     horarioReinicializacao.innerHTML = `${listaSplitHorario[0]}:${listaSplitHorario[1]}`
+                    sessionStorage.HORAREINICIALIZACAO = listaSplitHorario[0]
                 })
             } else {
                 throw "Houve um erro ao tentar realizar o cadastro!";
@@ -149,10 +160,10 @@ function buscarDadosKpi3() {
                     let dia = new Date().getDate()
                     let hora = new Date().getHours()
                     let minuto = new Date().getMinutes()
-                    console.log(mes, dia)
                     let valorEmReal = (totensInativos.length * 100).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
                     valorPerda.innerHTML = `R$ ${valorEmReal}`
-                    data_horario_calculo.innerHTML = `Cálculo feito em  ${mes}/${dia} às ${hora}:${minuto}` 
+                    console.log(mes)
+                    data_horario_calculo.innerHTML = `Cálculo feito em  ${mes + 1}/${dia} às ${hora}:${minuto}` 
                     atualizarKpis()
                 })
                

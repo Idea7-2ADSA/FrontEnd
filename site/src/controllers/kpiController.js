@@ -78,6 +78,7 @@ function buscarDataHoraTotem(req, res) {
     }
 }
 
+
 module.exports = {
     buscarDados,
     buscarAjustes,

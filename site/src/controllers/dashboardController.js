@@ -1,4 +1,5 @@
 var dashboardModel = require("../models/dashboardModel")
+var totemModel = require("../models/totemModel")
 function buscarTotens(req, res) {
     var fkFranquia = req.body.fkFranquiaServer
     if (fkFranquia == null) {

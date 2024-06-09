@@ -66,11 +66,6 @@
               <span class="unico" id="valorPerda"></span>
               <span class="valor-end-perda" id="data_horario_calculo"></span>
             </div>
-
-            <div class="kpi">
-              <p>Totens com alertas por mais de 24 horas</p>
-              <span class="unico">8 Totens</span>
-            </div>
           </div>
 
           <div id="containerGrafico" class="container-grafico">
@@ -86,10 +81,13 @@
   <script>
     window.onload = function () {
       nomeGerente.innerHTML = sessionStorage.NOME;
-      plotarGrafico()
-      buscarDadosKpi1()
-      buscarDadosKpi2()
-      buscarDadosKpi3()
+      buscarTotens()
+      setTimeout(() => {
+        plotarGrafico()
+        buscarDadosKpi1()
+        buscarDadosKpi2()
+        buscarDadosKpi3()
+      },300)
     };
     function sessoesTotens() {
       var opcaoSelecionada = totens.value;

@@ -29,11 +29,11 @@ function buscarTotens() {
         });
     return false;
 }
-buscarTotens()
 
 function buscarDados() {
     segunda = 0, terca = 0, quarta = 0, quinta = 0, sexta = 0, sabado = 0, domingo = 0
-    let totensFranquia = sessionStorage.TOTENSFRANQUIA.split(",")
+    let totensSessionStorage = sessionStorage.TOTENSFRANQUIA
+    let totensFranquia = totensSessionStorage.split(",")
     fetch("/dashboard/buscarDados", {
         method: "POST",
         headers: {
