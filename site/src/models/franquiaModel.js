@@ -8,6 +8,15 @@ function consultarFranquia(cep) {
     return database.executar(instrucao);
 }
 
+function buscarFranquias() {
+    var instrucao = `
+        select idFranquia, logradouro, numero from franquia;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    consultarFranquia
+    consultarFranquia,
+    buscarFranquias
 }

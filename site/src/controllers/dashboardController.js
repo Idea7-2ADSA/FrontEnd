@@ -1,4 +1,5 @@
 var dashboardModel = require("../models/dashboardModel")
+var totemModel = require("../models/totemModel")
 function buscarTotens(req, res) {
     var fkFranquia = req.body.fkFranquiaServer
     if (fkFranquia == null) {
@@ -45,4 +46,7 @@ function buscarDados(req, res) {
     }
 }
 
-module.exports = {buscarTotens,buscarDados}
+module.exports = {
+    buscarTotens,
+    buscarDados
+}
