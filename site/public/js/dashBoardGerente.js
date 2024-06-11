@@ -1,7 +1,10 @@
-let segunda, terca, quarta, quinta, sexta, sabado, domingo
-let fkFranquia = sessionStorage.IDFRANQUIA
+let segunda, terca, quarta, quinta, sexta, sabado, domingo;
+let fkFranquia = sessionStorage.IDFRANQUIA;
+let totalAlertasAtual = 0;
+let alertasPorTotem = {};
+
 function buscarTotens() {
-    listaTotens = []
+    let listaTotens = [];
     fetch("/dashboard/buscarTotens", {
         method: "POST",
         headers: {
@@ -11,29 +14,32 @@ function buscarTotens() {
             fkFranquiaServer: fkFranquia
         }),
     })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            if (resposta.ok) {
-                resposta.json().then(json => {
-                    for(let i = 0; i < json.length; i++) {
-                        listaTotens.push(json[i].codigoTotem)
-                    }
-                    sessionStorage.TOTENSFRANQUIA = listaTotens;
-                })
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                for (let i = 0; i < json.length; i++) {
+                    listaTotens.push(json[i].codigoTotem);
+                }
+                sessionStorage.TOTENSFRANQUIA = listaTotens;
+            });
+        } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+    })
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
     return false;
 }
 
 function buscarDados() {
-    segunda = 0, terca = 0, quarta = 0, quinta = 0, sexta = 0, sabado = 0, domingo = 0
-    let totensSessionStorage = sessionStorage.TOTENSFRANQUIA
-    let totensFranquia = totensSessionStorage.split(",")
+    segunda = 0, terca = 0, quarta = 0, quinta = 0, sexta = 0, sabado = 0, domingo = 0;
+    let totensSessionStorage = sessionStorage.TOTENSFRANQUIA;
+    let totensFranquia = totensSessionStorage.split(",");
+    alertasPorTotem = {};
+    let novosAlertasPorTotem = [];
+
     fetch("/dashboard/buscarDados", {
         method: "POST",
         headers: {
@@ -43,37 +49,43 @@ function buscarDados() {
             totensServer: totensFranquia
         }),
     })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            if (resposta.ok) {
-                resposta.json().then(json => {
-                    for(let i = 0; i < json.length; i ++) {
-                        for(let j = 0; j < json[i].length; j++){
-                            if(json[i][j].diaDaSemana == 0) {
-                                domingo += json[i][j].qtdAlerta
-                            } else if (json[i][j].diaDaSemana == 1) {
-                                segunda += json[i][j].qtdAlerta
-                            } else if (json[i][j].diaDaSemana == 2) {
-                                terca += json[i][j].qtdAlerta
-                            }else if(json[i][j].diaDaSemana == 3) {
-                                quarta += json[i][j].qtdAlerta
-                            } else if (json[i][j].diaDaSemana == 4) {
-                                quinta += json[i][j].qtdAlerta
-                            } else if (json[i][j].diaDaSemana == 5) {
-                                sexta += json[i][j].qtdAlerta
-                            } else if (json[i][j].diaDaSemana == 6) {
-                                sabado += json[i][j].qtdAlerta
-                            }
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                let totalAlertasNovo = 0;
+                for (let i = 0; i < json.length; i++) {
+                    let totemCodigo = totensFranquia[i];
+                    let indice = i % 7;
+                    if (!alertasPorTotem[totemCodigo]) {
+                        alertasPorTotem[totemCodigo] = {};
+                        alertasPorTotem[totemCodigo].indices = [0, 1, 2, 3, 4, 5, 6];
+                        alertasPorTotem[totemCodigo].alertas = [0, 0, 0, 0, 0, 0, 0];
+                    }
+                    for (let j = 0; j < json[i].length; j++) {
+                        alertasPorTotem[totemCodigo].alertas[indice] += json[i][j].qtdAlerta;
+                        totalAlertasNovo += json[i][j].qtdAlerta;
+
+                        let alertasAntes = alertasPorTotem[totemCodigo].alertas[indice];
+                        if (alertasPorTotem[totemCodigo].alertas[indice] > alertasAntes) {
+                            novosAlertasPorTotem.push(totemCodigo);
                         }
                     }
-                })
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+                }
+                let totalAlertasAnterior = sessionStorage.getItem('TOTAL_ALERTAS_ANTERIOR') || 0;
+                if (totalAlertasNovo > totalAlertasAnterior) {
+                    integracaoComTelegram(totalAlertasNovo, alertasPorTotem, novosAlertasPorTotem);
+                    sessionStorage.setItem('TOTAL_ALERTAS_ANTERIOR', totalAlertasNovo);
+                    totalAlertasAtual = totalAlertasNovo;
+                }
+            });
+        } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+    })
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
     return false;
 }
 
@@ -105,15 +117,16 @@ function plotarGrafico() {
         document.getElementById("myChart").getContext('2d'),
         config
     );
-    atualizarGrafico(myChart)
+    atualizarGrafico(myChart);
 }
+
 function atualizarGrafico(myChart) {
     buscarDados();
     setTimeout(() => {
-        myChart.data.datasets[0].data = [segunda, terca, quarta, quinta, sexta, sabado, domingo]
+        myChart.data.datasets[0].data = [segunda, terca, quarta, quinta, sexta, sabado, domingo];
         myChart.update();
         setTimeout(() => {
-            atualizarGrafico(myChart)
-        }, 15000)
+            atualizarGrafico(myChart);
+        }, 15000);
     }, 500);
 }

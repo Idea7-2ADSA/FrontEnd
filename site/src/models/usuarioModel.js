@@ -10,7 +10,7 @@ function buscarDadosFranquia(idFranquia) {
 
 function autenticarGerente(email, senha) {
     var instrucao = `
-        SELECT idGerente, nome, email, fkFranquia FROM gerente WHERE email = '${email}' AND senha = '${senha}';
+        SELECT idGerente, nome, email, cpf, fkFranquia FROM gerente WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
