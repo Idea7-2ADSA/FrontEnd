@@ -35,7 +35,7 @@
 
             <div class="box">
               <img src="./img/sair.png"/>
-              <span>Sair</span>
+              <a href="../index.html" onclick="sair()">Sair</a>
             </div>
           </div>
         </div>
@@ -94,6 +94,11 @@
       } else if (opcaoSelecionada == "Historico") {
         window.location.href = "historico.html";
       }
+    }
+  </script>
+  <script>
+    function sair() {
+      sessionStorage.clear()
     }
   </script>
 </html>

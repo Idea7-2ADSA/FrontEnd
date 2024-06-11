@@ -33,7 +33,7 @@
 
             <div class="box">
               <img src="./img/sair.png" />
-              <span>Sair</span>
+              <a href="../index.html" onclick="sair()">Sair</a>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="container-kpi">
           <select name="totens" id="totens" onchange="sessoesTotens()">
             <option value="Franquias">Franquias</option>
-            <option value="NovoTotem">Novo Toten</option>
+            <option value="NovoTotem">Novo Totem</option>
           </select>
 
           <div id="kpis" class="kpis">
@@ -97,4 +97,9 @@
     });
   });
 </script>
+<script>
+    function sair() {
+      sessionStorage.clear()
+    }
+  </script>
 <script src="../js/kpisTecnico.js"></script>

@@ -35,7 +35,7 @@
 
             <div class="box">
               <img src="./img/sair.png" />
-              <span>Sair</span>
+              <a href="../index.html" onclick="sair()">Sair</a>
             </div>
           </div>
         </div>
@@ -83,9 +83,9 @@
       nomeGerente.innerHTML = sessionStorage.NOME;
       buscarTotens()
       setTimeout(() => {
-        plotarGrafico()
-        buscarDadosKpi1()
-        buscarDadosKpi2()
+        //plotarGrafico()
+        //buscarDadosKpi1()
+        //buscarDadosKpi2()
         buscarDadosKpi3()
       },500)
     };
@@ -101,6 +101,11 @@
       } else if (opcaoSelecionada == "Ajustes") {
         window.location.assign("ajustes.html");
       }
+    }
+  </script>
+  <script>
+    function sair() {
+      sessionStorage.clear()
     }
   </script>
 </html>

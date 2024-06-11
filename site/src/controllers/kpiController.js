@@ -52,19 +52,20 @@ function buscarAjustes(req, res) {
 function buscarDataHoraTotem(req, res) {
     var totens = req.body.totensServer
     var listaDados = []
-
     if (totens == null) {
         res.status(400).send("A fk da franquia está nula")
     } else {
         for (let i = 0; i < totens.length; i++) {
             kpiModel.buscarDataHora(Number(totens[i]))
                 .then((resBuscaDados) => {
-                    let data_Hora = resBuscaDados[0].dataHora
-                    let lDataHora =data_Hora.split(" ")
-                    let lHorario = lDataHora[1].split(":")
-                    listaDados.push({horas: lHorario[0], minutos: lHorario[1], fkTotem: resBuscaDados[0].fkTotem})
-                    if (listaDados.length >= totens.length) {
-                        res.json(listaDados)
+                    if(resBuscaDados.length > 0) {
+                        let data_Hora = resBuscaDados[0].dataHora
+                        let lDataHora =data_Hora.split(" ")
+                        let lHorario = lDataHora[1].split(":")
+                        listaDados.push({horas: lHorario[0], minutos: lHorario[1], fkTotem: resBuscaDados[0].fkTotem})
+                        if (listaDados.length >= totens.length) {
+                            res.json(listaDados)
+                        }
                     }
                 }).catch((erro) => {
                     console.log(erro)

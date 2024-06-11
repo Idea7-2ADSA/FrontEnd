@@ -14,7 +14,7 @@
                 <div class="icones">
                     <div class="box">
                         <img src="./img/icon-profile.png" >
-                         <span>Gustavo Antunes</span>
+                         <span id="nomeTecnico"></span>
                     </div>
 
                     <div class="box">
@@ -29,12 +29,12 @@
 
                     <div class="box">
                         <img src="./img/publicar.png" >
-                        <span>Novo Toten</span>
+                        <span>Novo Totem</span>
                     </div>
 
                     <div class="box">
                         <img src="./img/sair.png">
-                        <span>Sair</span>
+                        <a href="../index.html" onclick="sair()">Sair</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
            
             <div class="container-form">
                 <select name="totens" id="totens" onchange="sessoesTotens()">
-                    <option value="NovoTotem" >Novo Toten</option>
+                    <option value="NovoTotem" >Novo Totem</option>
                     <option value="Franquias">Franquias</option>
                   </select>
 
@@ -75,9 +75,15 @@
     </div>
 </body>
 </html>
-
-
 <script>
+    function sair() {
+      sessionStorage.clear()
+    }
+  </script>
+<script>
+    window.onload = function() {
+        nomeTecnico.innerHTML = sessionStorage.NOME;
+    }
     function sessoesTotens(){
         var opcaoSelecionada = totens.value;
 

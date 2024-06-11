@@ -18,7 +18,7 @@ function buscarAjustes(fkFranquia) {
 
 function buscarDataHora(fkTotem) {
     var instrucao = `
-        select dataHora, fkTotem from dadosHardWare where fkTotem = ${fkTotem} order by dataHora desc limit 1;
+        select dataHora, fkTotem from dadosHardWare where fkTotem = ${fkTotem} and DATE(dataHora) = current_date() order by dataHora desc limit 1;
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

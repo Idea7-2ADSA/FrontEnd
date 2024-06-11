@@ -35,7 +35,7 @@
 
                     <div class="box">
                         <img src="./img/sair.png">
-                        <span>Sair</span>
+                        <a href="../index.html" onclick="sair()">Sair</a>
                     </div>
                 </div>
                
@@ -136,3 +136,8 @@
     plotarGrafico1()
     plotarGrafico2()
 </script>
+<script>
+    function sair() {
+      sessionStorage.clear()
+    }
+  </script>
