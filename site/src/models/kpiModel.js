@@ -17,9 +17,14 @@ function buscarAjustes(fkFranquia) {
 }
 
 function buscarDataHora(fkTotem) {
+    // select dataHora, fkTotem from dadosHardWare where fkTotem = ${fkTotem} and DATE(dataHora) = current_date() order by dataHora desc limit 1;
     var instrucao = `
-        select dataHora, fkTotem from dadosHardWare where fkTotem = ${fkTotem} and DATE(dataHora) = current_date() order by dataHora desc limit 1;
-    `
+        SELECT TOP 1 dataHora, fkTotem
+        FROM dadosHardWare
+        WHERE fkTotem = ${fkTotem} AND CAST(dataHora AS DATE) = CAST(GETDATE() AS DATE)
+        ORDER BY dataHora DESC;
+    
+        `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
