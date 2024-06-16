@@ -10,8 +10,19 @@ function cadastrar(codigoTotem, idFranquia, fkEmpresa) {
 
 function buscarAlertas(fkTotem) {
     instrucao = `
-        SELECT a.idAlerta, a.tipoAlerta, t.codigoTotem AS fkTotem FROM (SELECT * FROM alerta WHERE dataAlerta = CURDATE() AND fkTotem = ${fkTotem} ORDER BY idAlerta DESC LIMIT 1) AS a RIGHT JOIN (SELECT ${fkTotem} AS codigoTotem) AS t ON a.fkTotem = t.codigoTotem;
-    `
+       SELECT 
+            a.idAlerta, 
+            a.tipoAlerta, 
+            t.codigoTotem AS fkTotem 
+        FROM 
+            (SELECT TOP 1 * 
+             FROM alerta 
+             WHERE CAST(dataAlerta AS DATE) = CAST(GETDATE() AS DATE) 
+               AND fkTotem = ${fkTotem} 
+             ORDER BY idAlerta DESC) AS a 
+        RIGHT JOIN 
+            (SELECT ${fkTotem} AS codigoTotem) AS t 
+        ON a.fkTotem = t.codigoTotem;`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

@@ -10,11 +10,21 @@ function buscarTotens(fkFranquia) {
 
 function buscaDados(fkTotem) {
     var instrucao = `
-        select count(tipoAlerta) as 'qtdAlerta', diaDaSemana from alerta where year(dataAlerta) = year(CURDATE()) and WEEKOFYEAR(dataAlerta) = WEEKOFYEAR(CURDATE()) and fkTotem = ${fkTotem} group by diaDaSemana order by diaDaSemana;
+        SELECT 
+            COUNT(tipoAlerta) AS qtdAlerta, 
+            DATENAME(WEEKDAY, dataAlerta) AS diaDaSemana 
+        FROM alerta 
+        WHERE 
+            YEAR(dataAlerta) = YEAR(GETDATE()) 
+            AND DATEPART(WEEK, dataAlerta) = DATEPART(WEEK, GETDATE()) 
+            AND fkTotem = ${fkTotem} 
+        GROUP BY DATENAME(WEEKDAY, dataAlerta) 
+        ORDER BY diaDaSemana;
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
 
 module.exports = {
     buscarTotens,
