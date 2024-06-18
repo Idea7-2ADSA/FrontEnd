@@ -30,6 +30,11 @@ body{
     box-shadow: 2px 2px #0000003d;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
 .kpi-dias-semana {
     background-color: white;
     height: 70vh;
