@@ -78,7 +78,7 @@ body{
     box-shadow: 2px 2px #0000003d;
 }
 
-#kpi-img{
+#kpi_img{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,6 +130,8 @@ body{
 
 .alertas{
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     margin-top: 2%;
     margin-left: 2%;
     background-color: white;
@@ -140,8 +142,6 @@ body{
 .alertas .box{
     display: flex;
     align-items: center;
-    padding: 10px;
-    margin: 10px;
 }
 
 .container-grafico{

@@ -3,27 +3,23 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "SEU_SERVIDOR",
-    database: "SEU_BANCO_DE_DADOS",
-    user: "SEU_USUARIO",
-    password: "SUA_SENHA",
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
+    server: "44.216.232.183",
+    database: "ideabd",
+    user: "root",
+    password: "urubu100",
     options: {
-        encrypt: true, // for azure
+        encrypt: true, 
+        trustServerCertificate: true    
     }
 }
 
-// CONEXÃO DO MYSQL WORKBENCH
-var mySqlConfig = {
-    host: "localhost",
-    database: "ideabd",
-    user: "usuario",
-    password: "usuario",
-};
+//  CONEXÃO DO MYSQL WORKBENCH
+ var mySqlConfig = {
+     host: "localhost",
+     database: "ideabd",
+     user: "aluno",
+     password: "aluno",
+ }
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js

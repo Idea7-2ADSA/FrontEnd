@@ -14,7 +14,7 @@
                 <div class="icones">
                     <div class="box">
                         <img src="./img/icon-profile.png" >
-                         <span>Vitor Tigre</span>
+                         <span id="nomeTecnico"></span>
                     </div>
 
                     <div class="box">
@@ -35,7 +35,7 @@
 
                     <div class="box">
                         <img src="./img/sair.png">
-                        <span>Sair</span>
+                        <a href="../index.html" onclick="sair()">Sair</a>
                     </div>
                 </div>
                
@@ -51,29 +51,17 @@
                 <div id="kpis" class="kpis">
                     <div class="container-box-toten"> </div>
                     
-                    <div class="kpi" id="kpi-img">
-                       <img src="img/vermelho.png">
-                       <span>Limete de consumo</span>
+                    <div class="kpi" id="kpi_img">
+                       
                     </div>
 
-                    <div class="kpi">
+                    <div class="kpi" id ="kpi_2">
                         <p>Totens em Alerta</p>
-                        <a href="#">Toten 096</a>
-                        <a href="#">Toten 078</a>
-                        <a href="#">Toten 021</a>
-                        <a href="#">Toten 044</a>
-                        
-                    </div>  
-
-
-                    <div class="kpi">
-                        <p>Maior temperatura CPU hoje</p>
-                        <span class="descricao">89.15 °C</span>
                     </div>  
 
                     <div class="kpi">
-                        <p>Maior uso do Disco hoje</p>
-                        <span class="descricao">95%</span>
+                        <p>Maior uso do Processador hoje</p>
+                        <span class="descricao" id="usoCPU"></span>
                     </div>
                 </div>
 
@@ -85,19 +73,19 @@
 
                     <div class="box">
                         <img src="./img/cuidado.png">
-                        <span>Temperatura elevada e/ou consumos escalando</span>  
+                        <span>Alto nível de consumo da CPU ou RAM</span>  
                     </div>
 
                    
                     <div class="box">
                         <img src="./img/laranja.png">
-                        <span>Temperatura elevada, consumos e processos escalando</span>  
+                        <span>Alto nível de consumo da<br> CPU, RAM e DISCO! Risco de Travamentos</span>  
                     </div>
 
                    
                     <div class="box">
                         <img src="./img/vermelho.png">
-                        <span>Limites de consumo e/ou temperatura atingidos?s</span>  
+                        <span>Totem Inativo</span>  
                     </div>
                 </div>
                 <div id="containerGrafico"  class="container-grafico">
@@ -122,7 +110,6 @@
 <script>
     function sessoesTotens(){
         var opcaoSelecionada = totens.value;
-        console.log(opcaoSelecionada)
 
         if(opcaoSelecionada == 'Franquias'){
             window.location.assign('index.html')
@@ -137,73 +124,20 @@
         }
     }
 </script>
-
+<script src="../js/telaTotem.js"></script>
+<script src="../js/dashBoardTecnico.js"></script>
 <script>
-    // Função para obter parâmetros da URL
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-    
-    // Obtém o valor do parâmetro 'toten' da URL
-    var toten = getParameterByName('toten');
-    idTotem.innerHTML = 'Totem' + toten
+    nomeTecnico.innerHTML = sessionStorage.NOME;
+    var toten = sessionStorage.IDTOTEM
+    idTotem.innerHTML = 'Totem ' + toten
+    kpi1()
+    kpi2()
+    kpi3()
+    plotarGrafico1()
+    plotarGrafico2()
 </script>
-
 <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['18:00'],
-
-      datasets: [{
-        label: ['Consumo da CPU'] ,
-        borderColor: 'rgb(0,0,0)',
-        backgroundColor: 'rgb(42,45,115)',
-        data: [89.5] , 
-        borderWidth: 1
-      },
-
-  ]
-    },
-    
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
+    function sair() {
+      sessionStorage.clear()
     }
-  });
-
-  const ctx2 = document.getElementById('myChart2').getContext('2d');
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: ['17:00'],
-
-      datasets: [{
-        label: ['Consumo do Disco'] ,
-        backgroundColor: 'rgb(43,105,154)',
-        data: [95] , 
-        borderWidth: 1
-      },
-
-  ]
-    },
-    
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
   </script>
