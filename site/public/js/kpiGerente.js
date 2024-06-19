@@ -179,8 +179,8 @@ function buscarDadosKpi3() {
 
 function atualizarKpis() {
     setTimeout(() => {
-        // buscarDadosKpi1()
-        // buscarDadosKpi2()
+        buscarDadosKpi1()
+        buscarDadosKpi2()
         buscarDadosKpi3()
     }, 15000);
 }
