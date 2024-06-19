@@ -63,6 +63,21 @@ function buscarDados() {
                         alertasPorTotem[totemCodigo].alertas = [0, 0, 0, 0, 0, 0, 0];
                     }
                     for (let j = 0; j < json[i].length; j++) {
+  if (json[i][j].diaDaSemana == "Monday") {
+                            segunda += json[i][j].qtdAlerta
+                        } else if (json[i][j].diaDaSemana == "Tuesday") {
+                            terca += json[i][j].qtdAlerta
+                        } else if (json[i][j].diaDaSemana == "Wednesday") {
+                            quarta += json[i][j].qtdAlerta
+                        } else if (json[i][j].diaDaSemana == "Thursday") {
+                            quinta += json[i][j].qtdAlerta
+                        } else if (json[i][j].diaDaSemana == "Friday") {
+                            sexta += json[i][j].qtdAlerta
+                        } else if (json[i][j].diaDaSemana == "Saturday") {
+                            sabado += json[i][j].qtdAlerta
+                        } else if (json[i][j].diaDaSemana == "Sunday") {
+                            domingo += json[i][j].qtdAlerta
+                        }
                         alertasPorTotem[totemCodigo].alertas[indice] += json[i][j].qtdAlerta;
                         totalAlertasNovo += json[i][j].qtdAlerta;
 
