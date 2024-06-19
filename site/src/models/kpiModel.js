@@ -1,8 +1,9 @@
 var database = require("../database/config")
 
 function buscaDados(fkTotem) {
+    //select count(tipoAlerta) as 'qtdAlerta' , fkTotem from alerta where tipoAlerta in ('AMARELO','VERMELHO')  and dataAlerta = current_date() and fkTotem = ${fkTotem} group by fkTotem;
     var instrucao = `
-        select count(tipoAlerta) as 'qtdAlerta' , fkTotem from alerta where tipoAlerta in ('AMARELO','VERMELHO')  and dataAlerta = current_date() and fkTotem = ${fkTotem} group by fkTotem;
+    SELECT COUNT(tipoAlerta) AS qtdAlerta, fkTotem FROM alerta WHERE tipoAlerta IN ('AMARELO', 'VERMELHO') AND CAST(dataAlerta AS DATE) = CAST(GETDATE() AS DATE) AND fkTotem = ${fkTotem} GROUP BY fkTotem;
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
