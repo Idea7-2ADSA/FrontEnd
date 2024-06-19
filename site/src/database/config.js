@@ -5,8 +5,8 @@ var sql = require('mssql');
 var sqlServerConfig = {
     server: "44.216.232.183",
     database: "ideabd",
-    user: "root",
-    password: "urubu100",
+    user: "sa",
+    password: "D@nR1ck2005",
     options: {
         encrypt: true, 
         trustServerCertificate: true    

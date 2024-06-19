@@ -10,8 +10,13 @@ function buscaDados(fkTotem) {
 }
 
 function buscarAjustes(fkFranquia) {
+    // select diaReinicializacao, horaReinicializacao from ajuste where fkFranquia = ${fkFranquia};
     var instrucao = `
-        select diaReinicializacao, horaReinicializacao from ajuste where fkFranquia = ${fkFranquia};
+        SELECT
+        diaReinicializacao AS diaReinicializacao,
+        CONVERT(CHAR(5), horaReinicializacao, 108) AS horaReinicializacao
+        FROM
+        ajuste where fkFranquia = ${fkFranquia};
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
