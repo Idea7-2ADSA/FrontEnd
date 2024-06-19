@@ -7,22 +7,26 @@
     <title>Tela Login</title>
     <link rel="stylesheet" href="./css/style_login.css">
     <link rel="stylesheet" href="css/footer_e_header.css">
+    <script src="js/validacaoLogin.js"></script>
 </head>
 
 <body>
 
     <header>
-        <title>IDEA7 | Login</title>
-        <span class="logo" style="display: flex;
-        align-items: center;">
-            <a href=""><img src="images/logo-idea7_v2.png" alt="" style="width: 105px; padding: 6%; margin-top: 45px; margin-left: 30px;" ></a>
-    </span>
+        <span class="logo">
+            <a href="index.html"><img src="images/logo-idea7_v2.png" alt=""></a>
+        </span>
         <span class="outros">
-        <a href="index.html">Home</a>
-        <a href="">Sobre</a>
-        <a href="">Suporte</a>
-        <a href="cadastro.html">Cadastre-se</a>
-        <a href="">Fale Conosco</a></span>
+            <a href="index.html">Home</a>
+            <a href="">Sobre</a>
+            <a href="">Suporte</a>
+            <a href="login.html">Login</a>
+            <a href="">Fale Conosco</a>
+        </span>
+        <span class="outros_1">
+            <a href="login.html">Login</a>
+            <a href="cadastro.html">Cadastro</a>
+        </span>
     </header>
 
     <main>
@@ -35,24 +39,24 @@
             </div>
 
             <div class="campo">
-                <input type="text" class="input" id="cep" required>
+                <input type="password" class="input" id="senha" required>
                 <label for="senha">Senha</label>
             </div>
             
             <div class="button">
-                <button>Log-in</button>
-                <a href="#">Não possui cadastro? <span>Cadastre-se</span></a>
+                <button onclick="login()">Log-in</button>
+                <a href="./cadastro.html">Não possui cadastro? <span>Cadastre-se</span></a>
             </div>
         </div>
         
         <div id="container_right" class="info">
-            <img src="images/cadastro.png" alt="">
+            <img src="images/login.png" width="1px" alt="">
         </div>
     </div>
     </div>
 </main>
 
-<footer>
+<!-- <footer>
 
     <h1>
         IDEA7
@@ -81,7 +85,7 @@
     <span>Site criado integralmente por estudantes da <br>
         São Paulo Tech School</span>
 
-</footer>
+</footer> -->
 
 
 </body>

@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,400&display=swap');
+
+/* Todos os elementos da página */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+body{
+    background: linear-gradient(90deg, #FEDD58,#FF924D);
+}
+
+.banner{
+    height: 90vh;
+    padding: 20px;
+}
+
+.barra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 14%;
+    height: 90vh;
+    margin-left: 20px;
+    margin-top: 1%;
+    border-radius: 50px;
+    box-shadow: 2px 2px #0000003d;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.kpi-dias-semana {
+    background-color: white;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 750px;
+    border-radius: 25px;
+    padding: 30px;
+}
+
+.kpi-keyPass {
+    background-color: white;
+    width: 500px;
+    height: 36vh;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.tela-kpi {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+    /* align-items: center; */
+    justify-content: center;
+    padding-left: 4%;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.opcao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dias-semana .boxes{
+    display: flex;
+}
+
+.box{
+    padding: 10px;
+}
+
+.dias-semana button {
+    width: 42px;
+    height: 49px;
+    display: flex;
+    background-color: rgb(198, 198, 198);
+}
+
+.dias-semana input {
+    width: 42px;
+    height: 49px;
+    display: flex;
+    background-color: rgb(198, 198, 198);
+}
+
+.dias-semana span {
+    display: flex;
+    flex-direction: column;
+}
+
+.botao-salvar{
+    padding: 10px;
+}
+
+.botao-salvar button{
+    cursor: pointer;
+    background-color: #FF924D;
+    color: white;
+    border: none;
+    width: 180px;
+    height: 50px;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.botao-salvar button:hover{
+    background-color: #ff7a28;
+}
+
+
+.dias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 55vh;
+    gap: 20px;
+}
+
+.horas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 55vh;
+    gap: 20px;
+}
+
+.horas input{
+    text-align: center;
+}
+
+.horas h4 {
+    margin-bottom: 20px;
+}
+
+.horas input {
+    height: 30px;
+    width: 80px;
+    background-color: rgb(198, 198, 198);
+}
+
+.espaco{
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.espaco-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}

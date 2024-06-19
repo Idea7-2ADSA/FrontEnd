@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboards</title>
+    <link rel="stylesheet" href="./css/geral.css" />
+    <link rel="stylesheet" href="css/ajustes.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/ajustarParametros.js"></script>
+  </head>
+
+  <body>
+    <div class="banner">
+      <div class="container" id="container">
+        <div class="barra">
+          <div class="icones">
+            <div class="box">
+              <img src="./img/icon-profile.png" />
+              <span id="nomeGerente"></span>
+            </div>
+
+            <div class="box">
+              <img src="./img/icon-home.png" />
+              <span>Geral</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/icon-settings.png" />
+              <span>Ajustes</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/icon-phone.png" />
+              <span>Chamado</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/sair.png"/>
+              <a href="../index.html" onclick="sair()">Sair</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tela-kpi">
+          <div class="container-kpi">
+            <select name="totens" id="totens" onchange="sessoesTotens()">
+              <option value="Ajustes">Ajustes</option>
+              <option value="Geral">Geral</option>
+              <option value="Totens">Totens</option>
+            </select>
+          </div>
+
+          <div class="espaco">
+            <div class="box-ajustes-kpis">
+              <div class="kpi-dias-semana">
+                <div class="dias">
+                  <h4>Dias em que os totens serão reinicializados</h4>
+                  <div class="dias-semana">
+                    <div class="boxes">
+                      <div class="box">
+                        <input type="checkbox" id="checkbox1" value="1" />
+                        <span>S</span>
+                      </div>
+
+                      <div class="box">
+                        <input type="checkbox" id="checkbox2" value="2" />
+                        <span>T</span>
+                      </div>
+
+                      <div class="box">
+                        <input type="checkbox" id="checkbox3" value="3" />
+                        <span>Q</span>
+                      </div>
+
+                      <div class="box">
+                        <input type="checkbox" id="checkbox4" value="4" />
+                        <span>Q</span>
+                      </div>
+
+                      <div class="box">
+                        <input type="checkbox" id="checkbox5" value="5" />
+                        <span>S</span>
+                      </div>
+
+                      <div class="box">
+                        <input type="checkbox" id="checkbox6" value="6" />
+                        <span>S</span>
+                      </div>
+
+                      <div class="box">
+                        <input type="checkbox" id="checkbox7" value="0" />
+                        <span>D</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="horas">
+                  <h4>Horário em que os totens serão reinicializados</h4>
+                  <input type="time" name="horario" id="horario" />
+                </div>
+
+                <div class="botao-salvar">
+                  <button onclick="ajustarParametros()">
+                    Salvar alterções
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  window.onload = function () {
+    nomeGerente.innerHTML = sessionStorage.NOME;
+  };
+
+  function sessoesTotens() {
+    var opcaoSelecionada = totens.value;
+
+    if (opcaoSelecionada == "Historico") {
+      window.location.assign("historico.html");
+    } else if (opcaoSelecionada == "Geral") {
+      window.location.assign("index.html");
+    } else if (opcaoSelecionada == "Totens") {
+      window.location.assign("totens.html");
+    } else if (opcaoSelecionada == "Ajustes") {
+      window.location.assign("ajustes.html");
+    }
+  }
+</script>
+<script>
+    function sair() {
+      sessionStorage.clear()
+    }
+  </script>

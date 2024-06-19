@@ -9,34 +9,25 @@
 
 body{
     background: linear-gradient(90deg, #FEDD58,#FF924D);
-}
+}   
 
-.banner{
-    height: 90vh;
-    padding: 20px;
-}
 
 .banner .container{
     display: flex;
-    align-items: center;
 }
 
-.barra {
+.barra{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: white;
     width: 14%;
-    height: 95vh;
-    margin-left: 20px;
+    height: 85vh;
+    margin-left: 45px;
+    margin-top: 3%;
     border-radius: 50px;
     box-shadow: 2px 2px #0000003d;
-}
-
-a{
-    text-decoration: none;
-    color: black;
 }
 
 
@@ -57,11 +48,18 @@ a{
     padding: 5px;
 }
 
+
 .container-kpi{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    margin-top: 2%;
+}
+
+.container-kpi select{
+    width: 200px;
+    height: 35px;
+    border: none;
+    border-radius: 25px;
+    margin-left: 100px;
+    text-align: center;
 }
 
 .container-kpi .kpis{
@@ -73,10 +71,13 @@ a{
 .container-kpi .kpis .kpi{
     display: flex;
     flex-direction: column;
-    width: 23%;
+    justify-content: center;
+    padding: 30px;
+    width: 20%;
+    margin: 10px;
     height: 220px;
     margin-left: 20px;
-    margin-top: 3%;
+    margin-top: 2%;
     background-color: white;
     border-radius: 25px;
     box-shadow: 2px 2px #0000003d;
@@ -92,81 +93,73 @@ a{
 }
 
 .container-kpi .kpis .kpi span{
-    height: 30px;
-    font-size: 20px;
+    height: 60px;
+    padding: 20px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.container-kpi select{
-    width: 200px;
-    height: 35px;
+
+.container-kpi .kpis .kpi img{
+    margin-left: 35%;
+    width: 75px;
+}
+
+
+.container-kpi .kpis .kpi button{
+    cursor: pointer;
+    background-color: #FF924D;
+    color: white;
     border: none;
-    border-radius: 25px;
-    margin-left: 100px;
-    text-align: center;
+    width: 200px;
+    height: 150px;
+    padding: 7px;
+    border-radius: 20px;
+    margin-left: 12%;
+    font-weight: bold;
 }
 
-.container-grafico{
+.container-kpi .kpis .kpi button:hover{
+    background-color: #ff7a28;
+}
+
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+dialog {
+    background-color:  rgb(214, 214, 214);
+    margin-left: 30%;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 10em rgba(0, 0, 0, 0.54);
+    width: 50%;
+    margin-top: 7%;
+}
+
+.elementos{
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.grafico{
-    margin-top: 25px;
-    background-color: white;
-    width: 55%;
-    height: 55%;
-    border-radius: 20px;
-    box-shadow: 2px 2px #0000003d;
-}
-
-.alertas{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 23%;
-    height: 360px;
-    margin-top: 3%;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: 2px 2px #0000003d;
-}
-
-.alertas p{
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.alertas .box{
-    display: flex;
-    padding: 10px;
-}
-
-
-.alertas .box img{
-    height: 45px;
-}
-
-.alertas .box span{
-    margin: 5px;
-}
-
-.container-box-toten{
-    display: flex;
-    justify-content: space-between;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+}
+
+.elementos a{
+    color: black;
+    text-decoration: none;
 }
 
 .box-toten{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 200px;
     height: 200px;
     margin-left: 20px;
@@ -176,16 +169,30 @@ a{
     box-shadow: 2px 2px #0000003d;
 }
 
+.box-toten span{
+    font-size: 13px;
+    margin-top: 20%;
+    text-align: center;
+}
+
 .box-toten img{
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
-.container-kpi .kpis .kpi .valor-end{
-    margin-top: 20px;
-    font-size: 12px;
+.espaco-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
 }
 
-.container-kpi .kpis .kpi .valor-end-perda{
-    font-size: 12px;
-    margin-top: 55px;
+.espaco-btn button{
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
 }

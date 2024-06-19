@@ -1,110 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboards</title>
-    <link rel="stylesheet" href="./css/style.css">
-     <script src="https:cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
     <div class="banner">
-        <div class="container" id="container">
-            <div class="barra">    
-                <div class="icones">
-                    <div class="box">
-                        <img src="./img/icon-profile.png" >
-                         <span>Vitor Tigre</span>
-                    </div>
-
-                    <div class="box">
-                        <img src="./img/icon-home.png" >
-                        <span>Geral</span>
-                    </div>
-
-                    <div class="box">
-                        <img src="./img/icon-settings.png" > 
-                        <span>Ajustes</span>
-                    </div>
-
-
-                    <div class="box">
-                        <img src="./img/icon-phone.png">
-                        <span>Chamado</span>
-                    </div>
-
-                    <div class="box">
-                        <img src="./img/sair.png">
-                        <span>Sair</span>
-                    </div>
-                </div>
-               
-            </div>
-            
-            <div class="container-kpi">
-
-                <select name="totens" id="totens" onchange="sessoesTotens()">
-                    <option value="Totens" >Totens</option>
-                    <option value="Geral">Geral</option>
-                  </select> 
-              
-                  <div class="espaco-alerta">
-                    
-                  <div id="kpis" class="kpis"></div>
-                    <div class="alertas">
-                        <p>Tipos de Alerta</p>
-                        <div class="box">
-                            <img src="./img/verde.png">
-                            <span>Ok - Tudo de acordo com o esperado</span>  
-                        </div>
-
-                        <div class="box">
-                            <img src="./img/cuidado.png">
-                            <span>Atenção - Seu totem pode apresentar lentidão</span>  
-                        </div>
-
-                       
-                        <div class="box">
-                            <img src="./img/laranja.png">
-                            <span>Criríco - Seu totem pode falhar a qualquer instante</span>  
-                        </div>
-
-                       
-                        <div class="box">
-                            <img src="./img/vermelho.png">
-                            <span>Urgente - Seu totem não está funcionando</span>  
-                        </div>
-                    </div>
-                
-                    
-                    </div>
+      <div class="container" id="container">
+        <div class="barra">
+          <div class="icones">
+            <div class="box">
+              <img src="./img/icon-profile.png" />
+              <span id="nomeGerente"></span>
             </div>
 
+            <div class="box">
+              <img src="./img/icon-home.png" />
+              <span>Geral</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/icon-settings.png" />
+              <span>Ajustes</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/icon-phone.png" />
+              <span>Chamado</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/sair.png"/>
+              <a href="../index.html" onclick="sair()">Sair</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-kpi">
+          <select name="totens" id="totens" onchange="sessoesTotens()">
+            <option value="Totens">Totens</option>
+            <option value="Geral">Geral</option>
+            <option value="Ajustes">Ajustes</option>
+          </select>
+
+          <div class="espaco-alerta">
+            <div id="kpis" class="kpis"></div>
+            <div class="alertas">
+              <p>Tipos de Alerta</p>
+              <div class="box">
+                <img src="./img/verde.png" />
+                <span>Ok - Tudo de acordo com o esperado</span>
+              </div>
+
+              <div class="box">
+                <img src="./img/cuidado.png" />
+                <span>Atenção - Seu totem pode apresentar lentidão</span>
+              </div>
+
+              <div class="box">
+                <img src="./img/laranja.png" />
+                <span>Crítico - Seu totem pode falhar a qualquer instante</span>
+              </div>
+
+              <div class="box">
+                <img src="./img/vermelho.png" />
+                <span>Urgente - Seu totem não está funcionando</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 
   <script>
-    window.onload = function (){ 
-        for(i = 0; i < 9   ; i++){
-                 kpis.innerHTML+= `
-                     <div class="box-toten">
-                             <p>Toten ${i + 1}</p>
-                             <img src="./img/verde.png" width="45px">
-                             <span>Próxima reinicilização: 18/04 às 19h</span>
-                     </div>`
-             }
+    window.onload = function () {
+      nomeGerente.innerHTML = sessionStorage.NOME;
+      buscarAlertas()
+    };
 
-    } 
+    function sessoesTotens() {
+      var opcaoSelecionada = totens.value;
 
-    function sessoesTotens(){
-        var opcaoSelecionada = totens.value
-
-        if(opcaoSelecionada == "Geral"){
-            window.location.assign('index.html')
-        }
+      if (opcaoSelecionada == "Geral") {
+        window.location.href = "index.html";
+      } else if (opcaoSelecionada == "Ajustes") {
+        window.location.href = "ajustes.html";
+      } else if (opcaoSelecionada == "Historico") {
+        window.location.href = "historico.html";
+      }
     }
-    
-         
   </script>
-
+  <script>
+    function sair() {
+      sessionStorage.clear()
+    }
+  </script>
 </html>
+<script src="../js/totensGerente.js"></script>

@@ -9,6 +9,7 @@ body {
 
 .banner .container {
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
     width: 80%;
     height: 100vh;
@@ -106,4 +107,168 @@ h1{
 
 .button span{
     color: #fdd687;
+}
+
+
+
+/* @media only screen and (min-width: 200px) and (max-width: 700px) {
+    .banner .container .social {
+        display: none;
+    }
+
+    .banner {
+        width: 100%;
+        height: 100vh;
+        padding: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .caixa-formulario {
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .campo {
+        margin: 15px 0; 
+    }
+
+    .button button {
+        width: 100%; 
+    }
+
+    footer {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .banner .container .social {
+        display: none;
+    }
+
+    .banner {
+        width: 100%;
+        height: 100vh;
+        padding: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .caixa-formulario {
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .campo {
+        margin: 15px 0; 
+    }
+
+    .button button {
+        width: 100%; 
+    }
+
+    footer {
+        width: 100%;
+    }
+} */
+
+@media only screen and (min-width: 200px) and (max-width: 500px) {
+    .banner .container .social {
+        display: none;
+    }
+
+    .banner {
+        padding: 10%;
+        height: auto;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .caixa-formulario {
+        width: 90%;
+        margin-top: 35%;
+    }
+
+    .campo {
+        margin: 10px 0;
+    }
+
+    .button button {
+        width: 100%;
+    }
+
+    footer {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 700px) {
+    .banner .container .social {
+        display: none;
+    }
+
+    .banner {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .caixa-formulario {
+        width: 90%;
+        margin: 0 auto; /* Adicionando margem automática nas laterais para centralizar */
+        margin-top: 14%;}
+
+    .campo {
+        margin: 15px 0; 
+    }
+
+
+    footer {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .banner .container .social {
+        display: none;
+    }
+
+    .banner {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .caixa-formulario {
+        width: 90%;
+        margin: 0 auto; /* Adicionando margem automática nas laterais para centralizar */
+        margin-top: 14%;}
+
+    .campo {
+        margin: 15px 0;
+    }
+
+    footer {
+        width: 100%;
+    }
 }

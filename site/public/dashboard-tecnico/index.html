@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Franquias</title>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="container">
+        <div class="barra">
+          <div class="icones">
+            <div class="box">
+              <img src="./img/icon-profile.png" />
+              <span id="nomeTecnico"></span>
+            </div>
+
+            <div class="box">
+              <img src="./img/icon-phone.png" />
+              <span>Chamados</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/franquias.png" />
+              <span>Franquias</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/publicar.png" />
+              <span>Novo Totem</span>
+            </div>
+
+            <div class="box">
+              <img src="./img/sair.png" />
+              <a href="../index.html" onclick="sair()">Sair</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-kpi">
+          <select name="totens" id="totens" onchange="sessoesTotens()">
+            <option value="Franquias">Franquias</option>
+            <option value="NovoTotem">Novo Totem</option>
+          </select>
+
+          <div id="kpis" class="kpis">
+            <div class="container-box-toten"></div>
+          </div>
+        </div>
+        <div class="espaco-modal" id="espacomodal">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  window.onload = function () {
+    nomeTecnico.innerHTML = sessionStorage.NOME;
+    buscarFranquias();
+
+  };
+  function sessoesTotens() {
+    var opcaoSelecionada = totens.value;
+
+    if (opcaoSelecionada == "Franquias") {
+      window.location.assign("index.html");
+    } else if (opcaoSelecionada == "NovoTotem") {
+      window.location.assign("cadastroTotem.html");
+    }
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("kpis");
+    container.addEventListener("click", function (event) {
+      if (event.target && event.target.classList.contains("botao-dialogo")) {
+        const target = event.target;
+        const idDialogo = target.getAttribute("data-target");
+        let fkFranquia = target.getAttribute("fkfranquia")
+        buscarTotens(fkFranquia, idDialogo)
+      }
+    });
+    document.addEventListener("click", function (event) {
+      if (
+        event.target &&
+        event.target.tagName === "BUTTON" &&
+        event.target.closest("dialog")
+      ) {
+        const dialogo = event.target.closest("dialog");
+
+        if (dialogo) {
+          dialogo.close();
+        }
+      }
+    });
+  });
+</script>
+<script>
+    function sair() {
+      sessionStorage.clear()
+    }
+  </script>
+<script src="../js/kpisTecnico.js"></script>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/relatorios.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+    integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+    crossorigin="anonymous"></script>
+   
+    <title>Document</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="container">
+            <div class="barra">
+                <div class="icones">
+                    <div class="box">
+                        <img src="./img/icon-profile.png" >
+                         <span>Gustavo Antunes</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/icon-phone.png">
+                        <span>Chamados</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/franquias.png" >
+                        <span>Franquias</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/publicar.png" >
+                        <span>Novo Toten</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/relatorio.png" > 
+                        <span>Relatórios</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/sair.png">
+                        <span>Sair</span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="container-relatorios">
+                <select name="totens" id="totens" onchange="sessoesTotens()">
+                    <option value="Relatorios" >Relatórios</option>
+                    <option value="Franquias">Franquias</option>
+                    <option value="NovoTotem" >Novo Totem</option>
+                  </select>
+                  
+                  <div class="espaco-relatorio">
+                  <div class="linhas-relatorio">
+                    <div class="dados">
+                        <span>Ferraz de Vasconcelos</span> <span>25/08</span>
+                    </div>
+                    <div id="linhas"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function sessoesTotens(){
+        var opcaoSelecionada = totens.value;
+
+        if(opcaoSelecionada == 'Franquias'){
+            window.location.assign('index.html')
+        }
+
+        else if(opcaoSelecionada == 'NovoTotem'){
+            window.location.assign('cadastroTotem.html')
+        }
+    }
+</script>
+
+<script>
+     window.onload = function (){
+        for(i = 0; i < 7; i++){
+            var numeroAleatorio =  parseInt(Math.random()* 99) + 1
+            linhas.innerHTML += `
+            <div class="linha">
+                        <button onclick="gerarPdf()">Gerar PDF</button>
+                        <span>Totem 0${numeroAleatorio}</span>
+                    </div>
+                    <hr>
+            `
+        } 
+     }
+</script>
+
+<script>
+    function gerarPdf(){
+        var nome = "Lucas Saito Vitor";
+
+        // Instanciar o jsPDF
+        var doc = new jsPDF();
+
+        // Texto que deve estar no PDF
+        doc.fromHTML(`
+
+        <h1>DADOS FRANQUIA:</h1>
+<ul>
+    <li>Código: ${nome}</li>
+    <li>Endereço: Av. Dom Pedro II, 33 - Vila Romanopolis, Ferraz de Vasconcelos</li>
+    <li>Cidade: São Paulo</li>
+    <li>Telefone: (11) 99979-0532</li>
+    <li>E-mail: franq.ferraz@mcdonalds.com</li>
+    <li>Nome Gerente:</li>
+    <p>___________________________________________________________________________</p>
+</ul>
+
+        <h1>DADOS HARDWARE:</h1>
+        <ul>
+    <li>CPU: 89.15 °C</li>
+    <li>Memória: 7,5/7,7 (97%)</li>
+    <li>Disco: 95%</li>
+    <li>Temperatura: 82 °C</li>
+    <p>___________________________________________________________________________</p>
+</ul>
+        
+        `);
+
+       
+
+        // Gerar PDF
+        doc.save('relatorio.pdf');
+    }
+</script>
